@@ -3,128 +3,68 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import '../css/ActualizarAlojamientoServicio.css';
 
-const CrearAlojamientoServicio = () => {
-  const [alojamientoServicios, setAlojamientoServicios] = useState([]); // Estado para almacenar la lista de relaciones
-  const [selectedRelation, setSelectedRelation] = useState(null); // Estado para almacenar la relación seleccionada para actualizar
-  const [isCreating, setIsCreating] = useState(false); // Estado para controlar si se está creando una nueva relación
+const ActualizarAlojamientoServicio = () => {
+  const [alojamientoServicios, setAlojamientoServicios] = useState([]);
+  const [selectedRelation, setSelectedRelation] = useState(null);
 
   useEffect(() => {
-    fetchAlojamientoServicios(); // Cargar relaciones al montar el componente
+    fetchAlojamientoServicios();
   }, []);
 
-  // Función para manejar el envío del formulario
-  const handleSubmit = async (values, { setSubmitting, resetForm }) => {
-    const endpoint = 'http://localhost:3001/alojamientosServicios/createAlojamientoServicio'; // Endpoint para crear una nueva relación
-
-    try {
-      const response = await fetch(endpoint, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json', // Cabecera para enviar datos JSON
-        },
-        body: JSON.stringify(values), // Convertir valores a JSON y enviar en el cuerpo de la petición
-      });
-
-      if (!response.ok) {
-        throw new Error('Error al crear la relación'); // Lanzar error si la respuesta no es exitosa
-      }
-
-      toast.success('Relación creada con éxito'); // Mostrar notificación de éxito
-      resetForm(); // Reiniciar el formulario después de enviarlo con éxito
-      fetchAlojamientoServicios(); // Volver a cargar la lista de relaciones actualizada
-    } catch (error) {
-      console.error('Error:', error); // Manejo de errores en la consola
-      toast.error(error.message || 'Error al crear la relación'); // Mostrar mensaje de error en notificación
-    } finally {
-      setSubmitting(false); // Desactivar estado de "enviando" del formulario
-      setIsCreating(false); // Salir del modo de creación
-    }
-  };
-
-  // Función para manejar la actualización del formulario
   const handleUpdate = async (values, { setSubmitting, resetForm }) => {
-    const endpoint = `http://localhost:3001/alojamientosServicios/updateAlojamientoServicio/${selectedRelation.idAlojamientoServicio}`; // Endpoint para actualizar la relación existente
+    const endpoint = `http://localhost:3001/alojamientosServicios/updateAlojamientoServicio/${selectedRelation.idAlojamientoServicio}`;
 
     try {
       const response = await fetch(endpoint, {
         method: 'PUT',
         headers: {
-          'Content-Type': 'application/json', // Cabecera para enviar datos JSON
+          'Content-Type': 'application/json',
         },
-        body: JSON.stringify(values), // Convertir valores a JSON y enviar en el cuerpo de la petición
+        body: JSON.stringify(values),
       });
 
       if (!response.ok) {
-        throw new Error('Error al actualizar la relación'); // Lanzar error si la respuesta no es exitosa
+        throw new Error('Error al actualizar la relación');
       }
 
-      toast.success('Relación actualizada con éxito'); // Mostrar notificación de éxito
-      resetForm(); // Reiniciar el formulario después de enviarlo con éxito
-      fetchAlojamientoServicios(); // Volver a cargar la lista de relaciones actualizada
-      setSelectedRelation(null); // Limpiar la selección
+      toast.success('Relación actualizada con éxito');
+      resetForm();
+      fetchAlojamientoServicios();
+      setSelectedRelation(null);
     } catch (error) {
-      console.error('Error:', error); // Manejo de errores en la consola
-      toast.error(error.message || 'Error al actualizar la relación'); // Mostrar mensaje de error en notificación
+      console.error('Error:', error);
+      toast.error(error.message || 'Error al actualizar la relación');
     } finally {
-      setSubmitting(false); // Desactivar estado de "enviando" del formulario
+      setSubmitting(false);
     }
   };
 
-  // Esquema de validación usando Yup
   const validationSchema = Yup.object().shape({
-    idAlojamiento: Yup.string().required('ID de Alojamiento es requerido'), // Campo idAlojamiento es requerido
-    idServicio: Yup.string().required('ID de Servicio es requerido'), // Campo idServicio es requerido
+    idAlojamiento: Yup.string().required('ID de Alojamiento es requerido'),
+    idServicio: Yup.string().required('ID de Servicio es requerido'),
   });
 
-  // Función para obtener las relaciones desde el servidor
   const fetchAlojamientoServicios = async () => {
-    const endpoint = 'http://localhost:3001/alojamientosServicios/getAllAlojamientoServicios'; // Endpoint para obtener relaciones
+    const endpoint = 'http://localhost:3001/alojamientosServicios/getAllAlojamientoServicios';
 
     try {
-      const response = await fetch(endpoint); // Petición GET a la API
+      const response = await fetch(endpoint);
       if (response.ok) {
-        const data = await response.json(); // Convertir respuesta a JSON
-        setAlojamientoServicios(data); // Actualizar el estado con las relaciones obtenidas
+        const data = await response.json();
+        setAlojamientoServicios(data);
       } else {
-        throw new Error('Error al cargar relaciones'); // Lanzar error si la respuesta no es exitosa
+        throw new Error('Error al cargar relaciones');
       }
     } catch (error) {
-      console.error('Error:', error); // Manejo de errores en la consola
-      toast.error('Error al cargar relaciones'); // Mostrar notificación de error
+      console.error('Error:', error);
+      toast.error('Error al cargar relaciones');
     }
   };
 
   return (
     <div>
-      <button onClick={() => setIsCreating(true)}>Crear Nueva Relación</button>
-      {isCreating && (
-        <div>
-          <h1>Crear Nueva Relación entre Alojamiento y Servicio</h1>
-          <Formik
-            initialValues={{ idAlojamiento: '', idServicio: '' }} // Valores iniciales del formulario
-            validationSchema={validationSchema} // Esquema de validación a aplicar
-            onSubmit={handleSubmit} // Función a ejecutar al enviar el formulario
-          >
-            {({ isSubmitting }) => ( // Renderizado del formulario usando render props
-              <Form>
-                <div>
-                  <label>ID de Alojamiento:</label>
-                  <Field type="text" name="idAlojamiento" />
-                  <ErrorMessage name="idAlojamiento" component="div" className="error" />
-                </div>
-                <div>
-                  <label>ID de Servicio:</label>
-                  <Field type="text" name="idServicio" />
-                  <ErrorMessage name="idServicio" component="div" className="error" />
-                </div>
-                <button type="submit" disabled={isSubmitting}>Crear</button>
-              </Form>
-            )}
-          </Formik>
-        </div>
-      )}
-
       {selectedRelation && (
         <div>
           <h1>Actualizar Relación entre Alojamiento y Servicio</h1>
@@ -132,11 +72,11 @@ const CrearAlojamientoServicio = () => {
             initialValues={{
               idAlojamiento: selectedRelation.idAlojamiento,
               idServicio: selectedRelation.idServicio,
-            }} // Valores iniciales del formulario para actualizar
-            validationSchema={validationSchema} // Esquema de validación a aplicar
-            onSubmit={handleUpdate} // Función a ejecutar al enviar el formulario
+            }}
+            validationSchema={validationSchema}
+            onSubmit={handleUpdate}
           >
-            {({ isSubmitting }) => ( // Renderizado del formulario usando render props
+            {({ isSubmitting, resetForm }) => (
               <Form>
                 <div>
                   <label>ID de Alojamiento:</label>
@@ -148,7 +88,19 @@ const CrearAlojamientoServicio = () => {
                   <Field type="text" name="idServicio" />
                   <ErrorMessage name="idServicio" component="div" className="error" />
                 </div>
-                <button type="submit" disabled={isSubmitting}>Actualizar</button>
+                <div className="button-group">
+                  <button type="submit" className="actualizar" disabled={isSubmitting}>Actualizar</button>
+                  <button
+                    type="button"
+                    className="cancel-button"
+                    onClick={() => {
+                      resetForm();
+                      setSelectedRelation(null);
+                    }}
+                  >
+                    Cancelar
+                  </button>
+                </div>
               </Form>
             )}
           </Formik>
@@ -157,7 +109,7 @@ const CrearAlojamientoServicio = () => {
 
       <h2>Lista de Relaciones entre Alojamiento y Servicio</h2>
       <div className="tarjetas-contenedor">
-        {alojamientoServicios.length > 0 ? ( // Renderizado de la lista de relaciones
+        {alojamientoServicios.length > 0 ? (
           alojamientoServicios.map((relacion) => (
             <div key={relacion.idAlojamientoServicio} className="tarjeta">
               <p>
@@ -173,11 +125,11 @@ const CrearAlojamientoServicio = () => {
             </div>
           ))
         ) : (
-          <p>No hay relaciones disponibles.</p> // Mensaje si no hay relaciones para mostrar
+          <p>No hay relaciones disponibles.</p>
         )}
       </div>
     </div>
   );
 };
 
-export default CrearAlojamientoServicio;
+export default ActualizarAlojamientoServicio;

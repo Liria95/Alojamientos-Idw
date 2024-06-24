@@ -1,111 +1,163 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import { toast } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const CrearAlojamientoServicio = () => {
-  const [alojamientoServicios, setAlojamientoServicios] = useState([]); // Estado para almacenar la lista de relaciones
+    const [alojamientos, setAlojamientos] = useState([]);
+    const [servicios, setServicios] = useState([]);
+    const [alojamientosServicios, setAlojamientosServicios] = useState([]);
+    const [error, setError] = useState('');
 
-  // Función para manejar el envío del formulario
-  const handleSubmit = async (values, { setSubmitting, resetForm }) => {
-    const endpoint = 'http://localhost:3001/alojamientosServicios/createAlojamientoServicio'; // Endpoint para crear una nueva relación
+    useEffect(() => {
+        fetchAlojamientos();
+        fetchServicios();
+        fetchAlojamientosServicios();
+    }, []);
 
-    try {
-      const response = await fetch(endpoint, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json', // Cabecera para enviar datos JSON
-        },
-        body: JSON.stringify(values), // Convertir valores a JSON y enviar en el cuerpo de la petición
-      });
+    const fetchAlojamientos = async () => {
+        try {
+            const response = await fetch('http://localhost:3001/alojamiento/getAlojamientos');
+            if (response.ok) {
+                const data = await response.json();
+                setAlojamientos(data);
+            } else {
+                throw new Error('Error al cargar alojamientos');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            toast.error('Error al cargar alojamientos');
+        }
+    };
 
-      if (!response.ok) {
-        throw new Error('Error al crear la relación'); // Lanzar error si la respuesta no es exitosa
-      }
+    const fetchServicios = async () => {
+        try {
+            const response = await fetch('http://localhost:3001/servicio/getAllServicios');
+            if (response.ok) {
+                const data = await response.json();
+                setServicios(data);
+            } else {
+                throw new Error('Error al cargar servicios');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            toast.error('Error al cargar servicios');
+        }
+    };
 
-      toast.success('Relación creada con éxito'); // Mostrar notificación de éxito
-      resetForm(); // Reiniciar el formulario después de enviarlo con éxito
-      fetchAlojamientoServicios(); // Volver a cargar la lista de relaciones actualizada
-    } catch (error) {
-      console.error('Error:', error); // Manejo de errores en la consola
-      toast.error(error.message || 'Error al crear la relación'); // Mostrar mensaje de error en notificación
-    } finally {
-      setSubmitting(false); // Desactivar estado de "enviando" del formulario
-    }
-  };
+    const fetchAlojamientosServicios = async () => {
+        try {
+            const response = await fetch('http://localhost:3001/alojamientosServicios/getAllAlojamientoServicios');
+            if (response.ok) {
+                const data = await response.json();
+                setAlojamientosServicios(data);
+            } else {
+                throw new Error('Error al cargar alojamientos con servicios');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            setError('Error al cargar alojamientos con servicios');
+        }
+    };
 
-  // Esquema de validación usando Yup
-  const validationSchema = Yup.object().shape({
-    idAlojamiento: Yup.string().required('ID de Alojamiento es requerido'), // Campo idAlojamiento es requerido
-    idServicio: Yup.string().required('ID de Servicio es requerido'), // Campo idServicio es requerido
-  });
+    const handleSubmit = async (values, { setSubmitting, resetForm }) => {
+        const endpoint = 'http://localhost:3001/alojamientosServicios/createAlojamientoServicio';
 
-  // Función para obtener las relaciones desde el servidor
-  const fetchAlojamientoServicios = async () => {
-    const endpoint = 'http://localhost:3001/alojamientosServicios/getAllAlojamientoServicios'; // Endpoint para obtener relaciones
+        try {
+            const response = await fetch(endpoint, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(values),
+            });
 
-    try {
-      const response = await fetch(endpoint); // Petición GET a la API
-      if (response.ok) {
-        const data = await response.json(); // Convertir respuesta a JSON
-        setAlojamientoServicios(data); // Actualizar el estado con las relaciones obtenidas
-      } else {
-        throw new Error('Error al cargar relaciones'); // Lanzar error si la respuesta no es exitosa
-      }
-    } catch (error) {
-      console.error('Error:', error); // Manejo de errores en la consola
-      toast.error('Error al cargar relaciones'); // Mostrar notificación de error
-    }
-  };
+            if (!response.ok) {
+                throw new Error('Error al crear la relación');
+            }
 
-  return (
-    <div>
-      <h1>Crear Nueva Relación entre Alojamiento y Servicio</h1>
-      <Formik
-        initialValues={{ idAlojamiento: '', idServicio: '' }} // Valores iniciales del formulario
-        validationSchema={validationSchema} // Esquema de validación a aplicar
-        onSubmit={handleSubmit} // Función a ejecutar al enviar el formulario
-      >
-        {({ isSubmitting }) => ( // Renderizado del formulario usando render props
-          <Form>
-            <div>
-              <label>ID de Alojamiento:</label>
-              <Field type="text" name="idAlojamiento" /> 
-              <ErrorMessage name="idAlojamiento" component="div" className="error" /> 
+            toast.success('Relación creada con éxito');
+            resetForm();
+            fetchAlojamientosServicios(); // Actualizar la lista después de crear la relación
+        } catch (error) {
+            console.error('Error:', error);
+            toast.error(error.message || 'Error al crear la relación');
+        } finally {
+            setSubmitting(false);
+        }
+    };
+
+    const validationSchema = Yup.object().shape({
+        idAlojamiento: Yup.string().required('ID de Alojamiento es requerido'),
+        idServicio: Yup.string().required('ID de Servicio es requerido'),
+    });
+
+    return (
+        <div>
+            <h1>Crear Nueva Relación entre Alojamiento y Servicio</h1>
+            <Formik
+                initialValues={{ idAlojamiento: '', idServicio: '' }}
+                validationSchema={validationSchema}
+                onSubmit={handleSubmit}
+            >
+                {({ isSubmitting, setFieldValue }) => (
+                    <Form>
+                        <div>
+                            <label>ID de Alojamiento:</label>
+                            <Field as="select" name="idAlojamiento">
+                                <option value="">Seleccionar Alojamiento</option>
+                                {alojamientos.map((alojamiento) => (
+                                    <option key={alojamiento.idAlojamiento} value={alojamiento.idAlojamiento}>
+                                        {alojamiento.Titulo}
+                                    </option>
+                                ))}
+                            </Field>
+                            <ErrorMessage name="idAlojamiento" component="div" className="error" />
+                        </div>
+                        <div>
+                            <label>Nombre de Servicio:</label>
+                            <Field as="select" name="idServicio" onChange={(e) => {
+                                const selectedServicio = servicios.find(servicio => servicio.idServicio === e.target.value);
+                                setFieldValue('idServicio', e.target.value);
+                                setFieldValue('nombreServicio', selectedServicio.Nombre);
+                            }}>
+                                <option value="">Seleccionar Servicio</option>
+                                {servicios.map((servicio) => (
+                                    <option key={servicio.idServicio} value={servicio.idServicio}>
+                                        {servicio.Nombre}
+                                    </option>
+                                ))}
+                            </Field>
+                            <ErrorMessage name="idServicio" component="div" className="error" />
+                        </div>
+                        <button type="submit" disabled={isSubmitting}>
+                            Crear
+                        </button>
+                    </Form>
+                )}
+            </Formik>
+
+            <div className="list-container">
+                <ToastContainer />
+                <h1>Lista de Alojamientos con Servicios</h1>
+                {error && <div className="error-message">{error}</div>}
+                <div className="tarjetas-contenedor">
+                    {alojamientosServicios.length > 0 ? (
+                        alojamientosServicios.map((item) => (
+                            <div key={item.idAlojamientoServicio} className="tarjeta">
+                                <p><strong>ID Alojamiento Servicio:</strong> {item.idAlojamientoServicio}</p>
+                                <p><strong>ID Alojamiento:</strong> {item.idAlojamiento}</p>
+                                <p><strong>ID Servicio:</strong> {item.idServicio} </p>
+                            </div>
+                        ))
+                    ) : (
+                        <p>No hay alojamientos con servicios disponibles.</p>
+                    )}
+                </div>
             </div>
-            <div>
-              <label>ID de Servicio:</label>
-              <Field type="text" name="idServicio" /> 
-              <ErrorMessage name="idServicio" component="div" className="error" /> 
-            </div>
-            <button type="submit" disabled={isSubmitting}>Crear</button>
-          </Form>
-        )}
-      </Formik>
-
-      <h2>Lista de Relaciones entre Alojamiento y Servicio</h2>
-      <div className="tarjetas-contenedor">
-        {alojamientoServicios.length > 0 ? ( // Renderizado de la lista de relaciones
-          alojamientoServicios.map((relacion) => (
-            <div key={relacion.idAlojamientoServicio} className="tarjeta">
-              <p>
-                <span className="text-id">ID de Relación:</span> {relacion.idAlojamientoServicio} 
-              </p>
-              <p>
-                <span className="text-id">ID de Alojamiento:</span> {relacion.idAlojamiento} 
-              </p>
-              <p>
-                <span className="text-id">ID de Servicio:</span> {relacion.idServicio}
-              </p>
-            </div>
-          ))
-        ) : (
-          <p>No hay relaciones disponibles.</p> // Mensaje si no hay relaciones para mostrar
-        )}
-      </div>
-    </div>
-  );
+        </div>
+    );
 };
 
 export default CrearAlojamientoServicio;
