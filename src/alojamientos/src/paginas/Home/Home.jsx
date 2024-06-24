@@ -6,6 +6,7 @@ import SeccionDestacadas from "./componentes/SeccionDestacadas";
 import {SeccionTiposA} from "./componentes/SeccionTiposA";
 import {Footer} from "./componentes/Footer";
 import BotonBuscarAlojamientos from '../Home/componentes/BotonBuscarAlojamientos';
+import {CardDestacada} from "./componentes/CardDestacada";
 
 
 
@@ -17,6 +18,7 @@ export function Home() {
             <Presentacion />
             <Seccion ClassName='destacadas' nombre='ALOJAMIENTOS DESTACADOS' />
             <SeccionDestacadas />
+            <CardDestacada />
             <Seccion ClassName='categoriaPropiedades' nombre='TIPOS DE ALOJAMIENTOS' />
             <SeccionTiposA className='cardsCategorias' />
             <Footer/> 
