@@ -1,13 +1,12 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome, faPencilAlt, faKey, faCheckCircle, faTimesCircle, faMapMarkerAlt, faMoneyBillAlt, faBed, faBath, faList } from '@fortawesome/free-solid-svg-icons';
 
-const BuscarAlojamiento = () => {
+const ListarAlojamientos = () => {
   const [alojamientos, setAlojamientos] = useState([]);
   const [filteredAlojamientos, setFilteredAlojamientos] = useState([]);
-  const [imagenes, setImagenes] = useState([]);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
@@ -18,6 +17,7 @@ const BuscarAlojamiento = () => {
   const [cantidadHabitaciones, setCantidadHabitaciones] = useState('');
   const [tiposAlojamiento, setTiposAlojamiento] = useState([]);
   const [tipoAlojamientoSeleccionado, setTipoAlojamientoSeleccionado] = useState('');
+  const [imagenesAlojamientos, setImagenesAlojamientos] = useState({});
 
   useEffect(() => {
     const fetchAlojamientos = async () => {
@@ -29,6 +29,20 @@ const BuscarAlojamiento = () => {
         const data = await response.json();
         setAlojamientos(data);
         setFilteredAlojamientos(data);
+
+        // Obtener imágenes asociadas a cada alojamiento
+        const promises = data.map(async (alojamiento) => {
+          const responseImagenes = await fetch(`http://localhost:3001/imagen/getAllImagenes`);
+          if (responseImagenes.ok) {
+            const dataImagenes = await responseImagenes.json();
+            setImagenesAlojamientos(prevState => ({
+              ...prevState,
+              [alojamiento.idAlojamiento]: dataImagenes,
+            }));
+          }
+        });
+        await Promise.all(promises);
+
       } catch (err) {
         setError(err.message);
         toast.error(err.message || 'Error al obtener la lista de alojamientos');
@@ -51,43 +65,21 @@ const BuscarAlojamiento = () => {
       }
     };
 
-    const fetchImagenes = async () => {
-      try {
-        const response = await fetch('http://localhost:3001/imagen/getAllImagenes');
-        if (!response.ok) {
-          throw new Error('Error al obtener las imágenes de los alojamientos');
-        }
-        const data = await response.json();
-        setImagenes(data);
-      } catch (err) {
-        setError(err.message);
-        toast.error(err.message || 'Error al obtener las imágenes de los alojamientos');
-      }
-    };
-
     fetchAlojamientos();
     fetchTiposAlojamiento();
-    fetchImagenes();
   }, []);
 
   const precioMinimoOptions = [0, 50, 100, 200, 500];
   const precioMaximoOptions = [100, 200, 300, 400, 500, 1000, 2000, Number.MAX_SAFE_INTEGER];
   const cantidadHabitacionesOptions = ['', 1, 2, 3, 4, 5];
 
-  const filteredData = useMemo(() => {
-    return alojamientos
-      .filter(alojamiento =>
-        alojamiento.PrecioPorDia >= precioMinimo &&
-        alojamiento.PrecioPorDia <= precioMaximo &&
-        (estadoFiltro === '' || alojamiento.Estado.toLowerCase() === estadoFiltro.toLowerCase()) &&
-        (cantidadHabitaciones === '' || alojamiento.CantidadDormitorios >= cantidadHabitaciones) &&
-        (tipoAlojamientoSeleccionado === '' || alojamiento.TipoAlojamiento.toString() === tipoAlojamientoSeleccionado)
-      )
-      .map(alojamiento => ({
-        ...alojamiento,
-        imagenes: imagenes.filter(imagen => imagen.idAlojamiento === alojamiento.idAlojamiento)
-      }));
-  }, [alojamientos, precioMinimo, precioMaximo, estadoFiltro, cantidadHabitaciones, tipoAlojamientoSeleccionado, imagenes]);
+  const filteredData = alojamientos.filter(alojamiento =>
+    alojamiento.PrecioPorDia >= precioMinimo &&
+    alojamiento.PrecioPorDia <= precioMaximo &&
+    (estadoFiltro === '' || alojamiento.Estado.toLowerCase() === estadoFiltro.toLowerCase()) &&
+    (cantidadHabitaciones === '' || alojamiento.CantidadDormitorios >= cantidadHabitaciones) &&
+    (tipoAlojamientoSeleccionado === '' || alojamiento.TipoAlojamiento.toString() === tipoAlojamientoSeleccionado)
+  );
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -159,17 +151,20 @@ const BuscarAlojamiento = () => {
                 <div className="alojamiento-card" key={alojamiento.idAlojamiento} onClick={() => handleShowDetails(alojamiento)}>
                   <h3><FontAwesomeIcon icon={faHome} /> {alojamiento.Titulo}</h3>
                   <p><FontAwesomeIcon icon={faPencilAlt} /> {alojamiento.Descripcion}</p>
-                  <div className="imagenes-container">
-                    {alojamiento.imagenes.map((imagen) => (
-                      <img key={imagen.idImagen} src={imagen.url} alt={alojamiento.Titulo} />
-                    ))}
-                  </div>
-                  <p><FontAwesomeIcon icon={faMapMarkerAlt} /> {alojamiento.Latitud}</p>
-                  <p><FontAwesomeIcon icon={faMapMarkerAlt} /> {alojamiento.Longitud}</p>
+                  <p><FontAwesomeIcon icon={faMapMarkerAlt} /> Ubicacion: {alojamiento.Longitud}, {alojamiento.Latitud}</p>
                   <p><FontAwesomeIcon icon={faMoneyBillAlt} /> Precio por Día: {alojamiento.PrecioPorDia}</p>
                   <p><FontAwesomeIcon icon={faBed} /> Cantidad de Dormitorios: {alojamiento.CantidadDormitorios}</p>
                   <p><FontAwesomeIcon icon={faBath} /> Cantidad de Baños: {alojamiento.CantidadBanios}</p>
                   <p><FontAwesomeIcon icon={alojamiento.Estado === 'Disponible' ? faCheckCircle : faTimesCircle} /> Estado: {alojamiento.Estado}</p>
+
+                  {/* Mostrar imágenes */}
+                  {imagenesAlojamientos[alojamiento.idAlojamiento] && (
+                    <div className="imagenes-alojamiento">
+                      {imagenesAlojamientos[alojamiento.idAlojamiento].map((imagen) => (
+                        <img key={imagen.idImagen} src={imagen.RutaArchivo} alt={`Imagen ${imagen.idImagen}`} />
+                      ))}
+                    </div>
+                  )}
                 </div>
               ))
             ) : (
@@ -199,4 +194,4 @@ const BuscarAlojamiento = () => {
   );
 };
 
-export default BuscarAlojamiento;
+export default ListarAlojamientos;
