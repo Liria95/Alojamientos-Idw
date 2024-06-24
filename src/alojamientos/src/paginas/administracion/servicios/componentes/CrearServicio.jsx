@@ -4,30 +4,39 @@ import * as Yup from 'yup';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const CrearServicio = () => {
-  const [servicios, setServicios] = useState([]); // Estado para almacenar la lista de servicios
+// Hook personalizado para cargar servicios
+const useFetchServicios = () => {
+  const [servicios, setServicios] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetchServicios(); // Cargar servicios al montar el componente
-  }, []);
-
-  // Función para obtener los servicios desde el servidor
-  const fetchServicios = async () => {
-    const endpoint = 'http://localhost:3001/servicio/getAllServicios'; // Endpoint para obtener servicios
-
-    try {
-      const response = await fetch(endpoint); // Petición GET a la API
-      if (response.ok) {
-        const data = await response.json(); // Convertir respuesta a JSON
-        setServicios(data); // Actualizar el estado con los servicios obtenidos
-      } else {
-        throw new Error('Error al cargar servicios'); // Lanzar error si la respuesta no es exitosa
+    const fetchServicios = async () => {
+      const endpoint = 'http://localhost:3001/servicio/getAllServicios';
+      try {
+        const response = await fetch(endpoint);
+        if (response.ok) {
+          const data = await response.json();
+          setServicios(data);
+        } else {
+          throw new Error('Error al cargar servicios');
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        toast.error('Error al cargar servicios');
+      } finally {
+        setLoading(false);
       }
-    } catch (error) {
-      console.error('Error:', error); // Manejo de errores en la consola
-      toast.error('Error al cargar servicios'); // Mostrar notificación de error
-    }
-  };
+    };
+
+    fetchServicios();
+
+  }, []); // Dependencia vacía para que se ejecute solo una vez al montar el componente
+
+  return { servicios, loading };
+};
+
+const CrearServicio = () => {
+  const { servicios, loading } = useFetchServicios();
 
   // Esquema de validación usando Yup
   const validationSchema = Yup.object().shape({
@@ -36,29 +45,28 @@ const CrearServicio = () => {
 
   // Función para manejar el envío del formulario
   const handleSubmit = async (values, { setSubmitting, resetForm }) => {
-    const endpoint = 'http://localhost:3001/servicio/createServicio'; // Endpoint para crear un nuevo servicio
+    const endpoint = 'http://localhost:3001/servicio/createServicio';
 
     try {
       const response = await fetch(endpoint, {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json', // Cabecera para enviar datos JSON
+          'Content-Type': 'application/json',
         },
-        body: JSON.stringify(values), // Convertir valores a JSON y enviar en el cuerpo de la petición
+        body: JSON.stringify(values),
       });
 
       if (!response.ok) {
-        throw new Error('Error al guardar el servicio'); // Lanzar error si la respuesta no es exitosa
+        throw new Error('Error al guardar el servicio');
       }
 
-      toast.success('Servicio creado con éxito'); // Mostrar notificación de éxito
-      resetForm(); // Reiniciar el formulario después de enviarlo con éxito
-      fetchServicios(); // Volver a cargar la lista de servicios actualizada
+      toast.success('Servicio creado con éxito');
+      resetForm();
     } catch (error) {
-      console.error('Error:', error); // Manejo de errores en la consola
-      toast.error(error.message || 'Error al crear el servicio'); // Mostrar mensaje de error en notificación
+      console.error('Error:', error);
+      toast.error(error.message || 'Error al crear el servicio');
     } finally {
-      setSubmitting(false); // Desactivar estado de "enviando" del formulario
+      setSubmitting(false);
     }
   };
 
@@ -66,39 +74,39 @@ const CrearServicio = () => {
     <div>
       <h1>Crear Servicio</h1>
       <Formik
-        initialValues={{ Nombre: '' }} // Valores iniciales del formulario
-        validationSchema={validationSchema} // Esquema de validación a aplicar
-        onSubmit={handleSubmit} // Función a ejecutar al enviar el formulario
+        initialValues={{ Nombre: '' }}
+        validationSchema={validationSchema}
+        onSubmit={handleSubmit}
       >
-        {({ isSubmitting }) => ( // Renderizado del formulario usando render props
+        {({ isSubmitting }) => (
           <Form>
             <div>
               <label>Nombre del Servicio:</label>
-              <Field type="text" name="Nombre" /> 
-              <ErrorMessage name="Nombre" component="div" className="error" /> 
+              <Field type="text" name="Nombre" />
+              <ErrorMessage name="Nombre" component="div" className="error" />
             </div>
-            <button type="submit" disabled={isSubmitting}>Guardar</button>
+            <button type="submit" disabled={isSubmitting}>
+              {isSubmitting ? 'Guardando...' : 'Guardar'}
+            </button>
           </Form>
         )}
       </Formik>
 
       <h2>Lista de Servicios</h2>
-      <div className="tarjetas-contenedor">
-        {servicios.length > 0 ? ( // Renderizado de la lista de servicios
-          servicios.map((servicio) => (
+      {loading ? (
+        <p>Cargando servicios...</p>
+      ) : servicios.length > 0 ? (
+        <div className="tarjetas-contenedor">
+          {servicios.map((servicio) => (
             <div key={servicio.idServicio} className="tarjeta">
-              <p>
-                <span className="text-id">ID:</span> {servicio.idServicio} 
-              </p>
-              <p>
-                <span className="text-nombre">Nombre:</span> {servicio.Nombre}
-              </p>
+              <p><span className="text-id">ID:</span> {servicio.idServicio}</p>
+              <p><span className="text-nombre">Nombre:</span> {servicio.Nombre}</p>
             </div>
-          ))
-        ) : (
-          <p>No hay servicios disponibles.</p> // Mensaje si no hay servicios para mostrar
-        )}
-      </div>
+          ))}
+        </div>
+      ) : (
+        <p>No hay servicios disponibles.</p>
+      )}
     </div>
   );
 };
