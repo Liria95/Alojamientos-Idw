@@ -120,7 +120,7 @@ const CrearAlojamientoServicio = () => {
                             <Field as="select" name="idServicio" onChange={(e) => {
                                 const selectedServicio = servicios.find(servicio => servicio.idServicio === e.target.value);
                                 setFieldValue('idServicio', e.target.value);
-                                setFieldValue('nombreServicio', selectedServicio.Nombre);
+                                //setFieldValue('nombreServicio', selectedServicio.Nombre);
                             }}>
                                 <option value="">Seleccionar Servicio</option>
                                 {servicios.map((servicio) => (
