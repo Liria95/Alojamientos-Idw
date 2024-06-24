@@ -7,6 +7,7 @@ import { faHome, faPencilAlt, faKey, faCheckCircle, faTimesCircle, faMapMarkerAl
 const BuscarAlojamiento = () => {
   const [alojamientos, setAlojamientos] = useState([]);
   const [filteredAlojamientos, setFilteredAlojamientos] = useState([]);
+  const [imagenes, setImagenes] = useState([]);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
@@ -50,8 +51,23 @@ const BuscarAlojamiento = () => {
       }
     };
 
+    const fetchImagenes = async () => {
+      try {
+        const response = await fetch('http://localhost:3001/imagen/getAllImagenes');
+        if (!response.ok) {
+          throw new Error('Error al obtener las imágenes de los alojamientos');
+        }
+        const data = await response.json();
+        setImagenes(data);
+      } catch (err) {
+        setError(err.message);
+        toast.error(err.message || 'Error al obtener las imágenes de los alojamientos');
+      }
+    };
+
     fetchAlojamientos();
     fetchTiposAlojamiento();
+    fetchImagenes();
   }, []);
 
   const precioMinimoOptions = [0, 50, 100, 200, 500];
@@ -59,14 +75,19 @@ const BuscarAlojamiento = () => {
   const cantidadHabitacionesOptions = ['', 1, 2, 3, 4, 5];
 
   const filteredData = useMemo(() => {
-    return alojamientos.filter(alojamiento =>
-      alojamiento.PrecioPorDia >= precioMinimo &&
-      alojamiento.PrecioPorDia <= precioMaximo &&
-      (estadoFiltro === '' || alojamiento.Estado.toLowerCase() === estadoFiltro.toLowerCase()) &&
-      (cantidadHabitaciones === '' || alojamiento.CantidadDormitorios >= cantidadHabitaciones) &&
-      (tipoAlojamientoSeleccionado === '' || alojamiento.TipoAlojamiento.toString() === tipoAlojamientoSeleccionado)
-    );
-  }, [alojamientos, precioMinimo, precioMaximo, estadoFiltro, cantidadHabitaciones, tipoAlojamientoSeleccionado]);
+    return alojamientos
+      .filter(alojamiento =>
+        alojamiento.PrecioPorDia >= precioMinimo &&
+        alojamiento.PrecioPorDia <= precioMaximo &&
+        (estadoFiltro === '' || alojamiento.Estado.toLowerCase() === estadoFiltro.toLowerCase()) &&
+        (cantidadHabitaciones === '' || alojamiento.CantidadDormitorios >= cantidadHabitaciones) &&
+        (tipoAlojamientoSeleccionado === '' || alojamiento.TipoAlojamiento.toString() === tipoAlojamientoSeleccionado)
+      )
+      .map(alojamiento => ({
+        ...alojamiento,
+        imagenes: imagenes.filter(imagen => imagen.idAlojamiento === alojamiento.idAlojamiento)
+      }));
+  }, [alojamientos, precioMinimo, precioMaximo, estadoFiltro, cantidadHabitaciones, tipoAlojamientoSeleccionado, imagenes]);
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -138,6 +159,11 @@ const BuscarAlojamiento = () => {
                 <div className="alojamiento-card" key={alojamiento.idAlojamiento} onClick={() => handleShowDetails(alojamiento)}>
                   <h3><FontAwesomeIcon icon={faHome} /> {alojamiento.Titulo}</h3>
                   <p><FontAwesomeIcon icon={faPencilAlt} /> {alojamiento.Descripcion}</p>
+                  <div className="imagenes-container">
+                    {alojamiento.imagenes.map((imagen) => (
+                      <img key={imagen.idImagen} src={imagen.url} alt={alojamiento.Titulo} />
+                    ))}
+                  </div>
                   <p><FontAwesomeIcon icon={faMapMarkerAlt} /> {alojamiento.Latitud}</p>
                   <p><FontAwesomeIcon icon={faMapMarkerAlt} /> {alojamiento.Longitud}</p>
                   <p><FontAwesomeIcon icon={faMoneyBillAlt} /> Precio por Día: {alojamiento.PrecioPorDia}</p>

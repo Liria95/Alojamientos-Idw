@@ -3,15 +3,14 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const EliminarAlojamientoServicio = () => {
-  const [alojamientoServicios, setAlojamientoServicios] = useState([]); // Estado para almacenar la lista de relaciones
+  const [alojamientoServicios, setAlojamientoServicios] = useState([]);
 
   useEffect(() => {
-    fetchAlojamientoServicios(); // Cargar relaciones al montar el componente
+    fetchAlojamientoServicios();
   }, []);
 
-  // Función para eliminar una relación
   const handleDelete = async (idAlojamientoServicio) => {
-    const endpoint = `http://localhost:3001/alojamientosServicios/deleteAlojamientoServicio/${idAlojamientoServicio}`; // Endpoint para eliminar la relación
+    const endpoint = `http://localhost:3001/alojamientosServicios/deleteAlojamientoServicio/${idAlojamientoServicio}`;
 
     try {
       const response = await fetch(endpoint, {
@@ -19,32 +18,31 @@ const EliminarAlojamientoServicio = () => {
       });
 
       if (!response.ok) {
-        throw new Error('Error al eliminar la relación'); // Lanzar error si la respuesta no es exitosa
+        throw new Error('Error al eliminar la relación');
       }
 
-      toast.success('Relación eliminada con éxito'); // Mostrar notificación de éxito
-      fetchAlojamientoServicios(); // Volver a cargar la lista de relaciones actualizada
+      toast.success('Relación eliminada con éxito');
+      fetchAlojamientoServicios();
     } catch (error) {
-      console.error('Error:', error); // Manejo de errores en la consola
-      toast.error(error.message || 'Error al eliminar la relación'); // Mostrar mensaje de error en notificación
+      console.error('Error:', error);
+      toast.error(error.message || 'Error al eliminar la relación');
     }
   };
 
-  // Función para obtener las relaciones desde el servidor
   const fetchAlojamientoServicios = async () => {
-    const endpoint = 'http://localhost:3001/alojamientosServicios/getAllAlojamientoServicios'; // Endpoint para obtener relaciones
+    const endpoint = 'http://localhost:3001/alojamientosServicios/getAllAlojamientoServicios';
 
     try {
-      const response = await fetch(endpoint); // Petición GET a la API
+      const response = await fetch(endpoint);
       if (response.ok) {
-        const data = await response.json(); // Convertir respuesta a JSON
-        setAlojamientoServicios(data); // Actualizar el estado con las relaciones obtenidas
+        const data = await response.json();
+        setAlojamientoServicios(data);
       } else {
-        throw new Error('Error al cargar relaciones'); // Lanzar error si la respuesta no es exitosa
+        throw new Error('Error al cargar relaciones');
       }
     } catch (error) {
-      console.error('Error:', error); // Manejo de errores en la consola
-      toast.error('Error al cargar relaciones'); // Mostrar notificación de error
+      console.error('Error:', error);
+      toast.error('Error al cargar relaciones');
     }
   };
 
@@ -52,7 +50,7 @@ const EliminarAlojamientoServicio = () => {
     <div>
       <h2>Lista de Relaciones entre Alojamiento y Servicio</h2>
       <div className="tarjetas-contenedor">
-        {alojamientoServicios.length > 0 ? ( // Renderizado de la lista de relaciones
+        {alojamientoServicios.length > 0 ? (
           alojamientoServicios.map((relacion) => (
             <div key={relacion.idAlojamientoServicio} className="tarjeta">
               <p>
@@ -64,11 +62,16 @@ const EliminarAlojamientoServicio = () => {
               <p>
                 <span className="text-id">ID de Servicio:</span> {relacion.idServicio}
               </p>
-              <button onClick={() => handleDelete(relacion.idAlojamientoServicio)}>Eliminar</button>
+              <button
+                className="eliminar-button"
+                onClick={() => handleDelete(relacion.idAlojamientoServicio)}
+              >
+                Eliminar
+              </button>
             </div>
           ))
         ) : (
-          <p>No hay relaciones disponibles.</p> // Mensaje si no hay relaciones para mostrar
+          <p>No hay relaciones disponibles.</p>
         )}
       </div>
     </div>
