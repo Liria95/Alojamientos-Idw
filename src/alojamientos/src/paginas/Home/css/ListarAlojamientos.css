@@ -6,17 +6,23 @@
 }
 
 .search-and-list-container {
+  display: flex;
+  justify-content: space-between;
   width: 100%;
   max-width: 1200px;
 }
 
 .search-form {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 20px;
+  flex: 1;
+  background-color: #f0f0f0;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-right: 20px;
 }
 
 .search-form h2 {
+  font-size: 1.5rem;
   margin-bottom: 20px;
 }
 
@@ -24,97 +30,101 @@
 .estado-filter,
 .habitaciones-filter,
 .tipo-alojamiento-filter {
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 .price-filter label,
 .estado-filter label,
 .habitaciones-filter label,
 .tipo-alojamiento-filter label {
-  margin-right: 10px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.price-filter select,
+.estado-filter select,
+.habitaciones-filter select,
+.tipo-alojamiento-filter select {
+  width: 100%;
+  padding: 8px;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
 }
 
 .alojamientos-list-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex: 2;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .alojamientos-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 20px;
-  width: 100%;
 }
 
 .alojamiento-card {
   background-color: #f9f9f9;
-  border: 1px solid #ddd;
   padding: 15px;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
   cursor: pointer;
 }
 
-.alojamiento-card:hover {
-  transform: translateY(-5px);
-}
-
 .alojamiento-card h3 {
-  margin-top: 0;
+  font-size: 1.2rem;
   margin-bottom: 10px;
 }
 
 .alojamiento-card p {
-  margin: 5px 0;
+  font-size: 0.9rem;
+  margin-bottom: 5px;
 }
 
-.imagenes-container {
+.alojamiento-card p:first-child {
+  margin-top: 0;
+}
+
+.alojamiento-card .imagenes-alojamiento {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-  gap: 5px;
+  gap: 10px;
   margin-top: 10px;
 }
 
-.imagenes-container img {
+.alojamiento-card .imagenes-alojamiento img {
   width: 100%;
-  height: 100px;
-  object-fit: cover;
-  border-radius: 4px;
+  height: auto;
+  border-radius: 5px;
 }
 
 .pagination {
   margin-top: 20px;
+  text-align: center;
 }
 
-.pagination-list {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  gap: 5px;
-}
-
-.page-item {
-  display: inline;
-}
-
-.page-link {
-  padding: 5px 10px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  text-decoration: none;
-  color: #007bff;
+.pagination button {
+  padding: 8px 16px;
+  margin: 0 5px;
+  font-size: 0.9rem;
+  border-radius: 5px;
   cursor: pointer;
-}
-
-.page-item.active .page-link {
   background-color: #007bff;
-  color: white;
-  border-color: #007bff;
+  color: #fff;
+  border: none;
 }
 
-.page-link:hover {
-  background-color: #0056b3;
-  color: white;
+.pagination button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.loading-message {
+  text-align: center;
+  font-size: 1.2rem;
+  margin-top: 20px;
 }

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import '../css/ListarAlojamientos.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome, faPencilAlt, faKey, faCheckCircle, faTimesCircle, faMapMarkerAlt, faMoneyBillAlt, faBed, faBath, faList } from '@fortawesome/free-solid-svg-icons';
 
@@ -30,22 +31,25 @@ const ListarAlojamientos = () => {
         setAlojamientos(data);
         setFilteredAlojamientos(data);
 
-        // Obtener imágenes asociadas a cada alojamiento
-        const promises = data.map(async (alojamiento) => {
-          const responseImagenes = await fetch(`http://localhost:3001/imagen/getAllImagenes`);
-          if (responseImagenes.ok) {
-            const dataImagenes = await responseImagenes.json();
-            setImagenesAlojamientos(prevState => ({
-              ...prevState,
-              [alojamiento.idAlojamiento]: dataImagenes,
-            }));
-          }
-        });
-        await Promise.all(promises);
+        // Obtener todas las imágenes disponibles
+        const responseImagenes = await fetch('http://localhost:3001/imagen/getAllImagenes');
+        if (!responseImagenes.ok) {
+          throw new Error('Error al obtener las imágenes');
+        }
+        const dataImagenes = await responseImagenes.json();
 
+        // Organizar imágenes por idAlojamiento
+        const imagenesPorAlojamiento = {};
+        dataImagenes.forEach(imagen => {
+          if (!imagenesPorAlojamiento[imagen.idAlojamiento]) {
+            imagenesPorAlojamiento[imagen.idAlojamiento] = [];
+          }
+          imagenesPorAlojamiento[imagen.idAlojamiento].push(imagen);
+        });
+        setImagenesAlojamientos(imagenesPorAlojamiento);
       } catch (err) {
         setError(err.message);
-        toast.error(err.message || 'Error al obtener la lista de alojamientos');
+        toast.error(err.message || 'Error al obtener la lista de alojamientos e imágenes');
       } finally {
         setLoading(false);
       }
