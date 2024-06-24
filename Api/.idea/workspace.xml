@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="db73030a-17a2-431f-acdd-8b6fa90ed1b2" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/dbConfig.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/dbConfig.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/public/contacto.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/public/css/styles.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/public/css/stylesInst.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/public/img/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/public/img/1000_F_589191718_2HOhelQTqJZ4L0OK3XTmhyO9bBagHUBc.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/public/img/2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/public/img/3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/public/img/4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/public/img/5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/public/img/6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/public/img/64ad29af51b1728fb632db4b001b50c0.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/public/img/AdobeStock_514239297_Preview.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/public/img/LogoRental.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/public/img/Screenshot 2024-05-24 120356.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/public/img/Screenshot 2024-05-24 121237.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/public/img/Screenshot 2024-05-24 121350.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/public/img/casa-contacto.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/public/img/casa-portada.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/public/img/casa.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/public/img/casaIMG.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/public/img/casaPortada2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/public/img/casalogo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/public/img/casalogo.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/public/img/empresaIMG.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/public/img/foto_miembro1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/public/img/foto_miembro2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/public/img/foto_miembro3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/public/img/foto_miembro4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/public/img/imagen_empresa1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/public/img/imagen_empresa2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/public/img/imagen_empresa3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/public/img/index.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/public/img/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/public/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/public/institucional.html" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="autoscrollToSource" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showMembers" value="true" />
+    <option name="sortByType" value="true" />
+    <option name="sortKey" value="BY_TYPE" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "git-widget-placeholder": "main",
+    "node.js.selected.package.tslint": "(autodetect)"
+  }
+}]]></component>
+  <component name="TaskManager">
+    <servers />
+  </component>
+</project>
