@@ -1,0 +1,31 @@
+footer {
+
+  box-sizing: border-box;
+  margin-top: 60px;
+  background-color: #A25733;
+  padding: 25px 0;
+  position: relative;
+  width: 100%;
+}
+
+.redesSociales {
+  width: 70%;
+  margin: auto;
+  display: flex;
+}
+
+.redesSociales ul{
+  display: inline-flex;
+  width: 70%;
+  margin: auto;
+  justify-content: space-around;
+}
+
+.redesSociales img {
+  text-align: center;
+}
+
+.redesSociales a {
+  color: #ece4dd;
+  font-weight: bold;
+}

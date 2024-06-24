@@ -1,0 +1,155 @@
+/* Estilo general para el contenedor */
+.tarjetas-contenedor {
+  max-width: 1400px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+/* Estilo para cada tarjeta de imagen */
+.tarjeta {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%; /* Ancho de la tarjeta, el doble de ancho */
+  margin-right: 20px; /* Espacio entre las tarjetas */
+}
+
+.tarjeta:hover {
+  transform: translateY(-5px);
+}
+
+.tarjeta img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  border-bottom: 1px solid #ddd;
+}
+
+.tarjeta-info {
+  padding: 15px;
+}
+
+.tarjeta-info p {
+  font-size: 16px;
+  color: #000;
+  margin-bottom: 15px;
+  text-align: justify; /* Alineación justificada del texto */
+}
+
+.text-imagen, .text-url, .text-titulo {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+ /* Estilos para la imagen dentro de la tarjeta */
+ .card img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Estilos para el cuerpo de la tarjeta */
+.card-body {
+  padding: 15px;
+}
+
+/* Estilos para el título de la tarjeta */
+.card-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* Estilos para el texto de la tarjeta */
+.card-text {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+/* Estilos para los botones de acción */
+button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  margin: 5px;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.boton-editar {
+  background-color: #4CAF50; /* Verde */
+  color: white;
+}
+
+.boton-eliminar {
+  background-color: #f44336; /* Rojo */
+  color: white;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+form div {
+  margin-bottom: 15px;
+}
+
+label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+input[type="text"], select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.error {
+  color: #f44336; /* Rojo */
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+button[type="submit"].boton-actualizar, button[type="button"] {
+  margin-top: 10px;
+}
+
+button[type="button"] {
+  background-color: #333c3c;
+  color: white;
+}
+
+
+button[type="submit"].boton-actualizar{
+  background-color: black;
+  color: white;
+}
+
+

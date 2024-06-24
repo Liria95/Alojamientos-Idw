@@ -1,0 +1,29 @@
+/* Estilos de la sección institucional */
+.seccion-institucional {
+    width: 80%;
+    margin: auto;
+  }
+  
+  /* Ajuste para los párrafos dentro de la sección institucional */
+  .seccion-institucional p {
+    max-width: calc(80% - 45px - 55px); /* Ancho de las barras azules */
+    margin: 20px  auto; /* Centrar el texto */
+    padding: 0 20px; /* Agregar un espacio entre el texto y las barras */
+  }
+  
+  /* Estilos para el título "Bienvenido a IDW Check-In" */
+  h1 {
+    text-align: center; /* Centrar el texto */
+    margin-top: 150px; /* Ajustar el espacio superior */
+  }
+  
+  /* Estilos para títulos secundarios */
+  seccion-institucional h2 {
+    width: 80%;
+    background: #555555;
+    color: #fff;
+    text-align: center;
+    margin: 20px auto;
+    padding: 10px;
+  }
+  

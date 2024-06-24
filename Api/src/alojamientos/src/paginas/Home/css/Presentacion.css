@@ -1,0 +1,21 @@
+.PresentacionIntro {
+  position: relative;
+  box-sizing: border-box;
+  background-color: #ECE4DD;
+  margin: 0;
+  padding: 230px 15% 0;
+}
+
+
+.PresentacionIntro p {
+  padding: 10px 0 90px ;
+}
+
+h2 .textoResaltado {
+  font-weight: bolder;
+}
+
+h2 {
+  background-color: #ECE4DD;
+}
+

@@ -1,0 +1,47 @@
+.cardsCategorias card {
+  width: 18%;
+  height: 350px;
+  margin: auto;
+  margin-top: 35px;
+  text-align: center;
+  position: relative;
+  background-color: white;
+  box-shadow: 5px 5px 5px #313131;
+}
+
+.cardsCategorias h4 {
+  border-color: #ece4dd;
+  border-style: solid;
+  border-radius: 5px;
+  width: 80%;
+  padding: 10px;
+  margin: auto;
+  margin-top: 15px;
+}
+
+.cardsCategorias p {
+  width: 60%;
+  padding: 11px;
+  margin: auto;
+  margin-top: 25px;
+  font-size: 0.7em;
+  text-align: justify;
+}
+
+.cardsCategorias .buscar {
+  width: max-content;
+  background-color: #ECA555;
+  border-style: none;
+  border-radius: 50px;
+  padding: 10px 25px;
+  font-size: 1em;
+  position: relative;
+  bottom: 2px;
+  right: -10px;
+  color: #ece4dd;
+  font-weight: bold;
+}
+
+card svg {
+  margin-top: 25px;
+}

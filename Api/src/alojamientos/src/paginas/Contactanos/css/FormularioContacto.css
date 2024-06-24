@@ -1,0 +1,54 @@
+
+.contacto-contacto {
+  width: 100%;
+  margin: auto;
+  padding: 25px 4;
+  
+}
+
+.contact-form {
+  width: 60%;
+  margin: 30px auto;
+  background: rgb(110, 106, 106);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group textarea {
+  width: 95%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.form-group textarea {
+  resize: vertical;
+}
+
+button[type="submit"] {
+  padding: 10px 50px;
+  background-color: #b68e51;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #a07033;
+}
+
+.contacto {
+  background: #edb85c;
+  color: gray;   
+}

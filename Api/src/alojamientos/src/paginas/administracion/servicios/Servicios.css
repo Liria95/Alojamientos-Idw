@@ -1,0 +1,35 @@
+.menu-container {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+  }
+  
+  .menu-container button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  form label {
+    display: flex;
+    flex-direction: column;
+    font-weight: bold;
+  }
+  
+  form input {
+    padding: 5px;
+    font-size: 14px;
+  }
+  
+  form button {
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  

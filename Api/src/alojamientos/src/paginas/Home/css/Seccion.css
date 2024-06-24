@@ -1,0 +1,20 @@
+section h3 {
+  background-color: #333C3C;
+  color: #ECA555;
+  width: 70vw;
+  margin: auto;
+  padding: 16px;
+  text-align: center;
+  border-radius: 20px;
+  position: relative;
+  bottom: 35px;
+  top: 10px;
+}
+
+.destacadas {
+  background-color: #ffffff;
+}
+
+.categoriaPropiedades {
+  background-color: #ece4dd;
+}

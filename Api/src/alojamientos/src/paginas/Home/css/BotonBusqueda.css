@@ -1,0 +1,9 @@
+.buscar {
+  background-color: #ECA555;
+  border: none; /* Elimina el borde */
+  border-radius: 50px;
+  padding: 10px 25px;
+  font-size: 1em;
+  color: #ece4dd;
+  font-weight: bold;
+}

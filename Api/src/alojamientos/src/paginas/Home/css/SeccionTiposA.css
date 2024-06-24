@@ -1,0 +1,16 @@
+.categoriaPropiedades {
+  background-color: #ece4dd;
+  position: relative;
+  height: 100%;
+  padding-bottom: 90px;
+  margin-bottom: 0;
+  display: flex;
+  margin: auto;
+}
+
+.cardsCategorias {
+  display: flex;
+  width: 60vw;
+  margin: auto;
+
+}

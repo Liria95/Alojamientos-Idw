@@ -1,0 +1,201 @@
+/* Estilos generales */
+.tipo-alojamiento-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  margin-top: 20px;
+}
+
+.card {
+  width: 45%;
+  max-height: 1000px;
+  padding: 20px;
+  background-color: #ffffff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.card h2 {
+  margin-bottom: 10px;
+  color: #333c3c;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.textarea-input {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+}
+
+.error {
+  color: #ff0000;
+  font-size: 0.9em;
+  margin-top: 5px;
+}
+
+.table-container {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.table th,
+.table td {
+  padding: 15px;
+  text-align: left;
+  border-bottom: 1px solid #dddddd;
+}
+
+.table th {
+  background-color: #eca555;
+  color: white;
+}
+
+.table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.table tr:hover {
+  background-color: #f1f1f1;
+}
+/* Estilos para el formulario de crear */
+.crear-card {
+  background-color: #f4f4f4;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.crear-card h2 {
+  margin-bottom: 20px;
+  font-size: 32px;
+  color: #333;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 16px;
+  color: #333c33;
+}
+
+.textarea-input {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.error {
+  color: #ff0000;
+  font-size: 14px;
+  margin-top: 4px;
+}
+
+.button-group {
+  margin-top: 20px;
+  text-align: right;
+}
+
+.submit-button, .cancel-button {
+  padding: 10px 20px;
+  background-color: #333C3C;
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+.submit-button {
+  background-color: #333c3c;
+}
+
+.cancel-button {
+  background-color: #eca555;
+}
+/* Estilos para el formulario de editar */
+.edit-button, .update-button, .cancel-button {
+  padding: 6px 24px;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+
+.edit-button {
+  background-color: #a25733;
+  color: white;
+}
+
+.update-button {
+  background-color: #333C3C;
+  color: white;
+}
+
+.cancel-button {
+  background-color: #eca555;
+  color: white;
+}
+/* Estilos para el botón de eliminar */
+.delete-button {
+  padding: 6px 24px;
+  background-color: #333C3C;
+  border: none;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-right: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.delete-button:hover {
+  background-color: #ffc107;
+}
+/* Estilos para la tabla de listado */
+.listar-card {
+  overflow: hidden;
+}
+
+.table-container {
+  max-height: 5000px;
+  overflow-y: auto; 
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  border-radius: 8px;
+}

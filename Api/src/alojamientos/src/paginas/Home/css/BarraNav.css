@@ -1,0 +1,400 @@
+.barraNavegacion {
+  margin: 0;
+  background-color: #A25733;
+  display: flex;
+  width: 85vw;
+  justify-content: right;
+}
+
+.barraNavegacion ul {
+  align-content: center;
+  border-bottom-color: #ece4dd;
+  border-bottom-style: solid;
+  position: relative;
+
+}
+.barraNavegacion li {
+  display: inline-block;
+  color: black;
+  margin: 5px;
+  padding: 20px;
+}
+
+.barraNavegacion li:hover {
+  background-color: #ece4dd;
+  border-radius: 30px;
+  padding: 20px;
+  color: #A25733;
+}
+
+.barraNavegacion a {
+  color: white;
+  text-decoration: none;
+}
+
+.barraNavegacion a:hover {
+  color: #A25733;
+  font-weight: bold;
+}
+
+.logoBarra{
+  position:absolute;
+  left: 390px;
+  top: 22px;
+  width: 80px;
+
+}
+
+.barraNavegacion {
+  margin: 0;
+  background-color: #A25733;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+.logoYMenu {
+  display: flex;
+  align-items: center;
+}
+
+.menuHamburguesa {
+  display: none; /* Ocultar por defecto en pantallas grandes */
+  cursor: pointer;
+  background: transparent;
+  border: none;
+}
+
+.menuHamburguesa span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  margin-bottom: 5px;
+  position: relative;
+  background: white;
+  border-radius: 3px;
+}
+
+.menu {
+  list-style-type: none;
+  display: flex;
+}
+
+.menu li {
+  margin: 0 10px;
+}
+
+@media screen and (min-width: 320px) and (max-width: 496px) {
+  /* MOBILE M */
+  .barraNavegacion ul {
+    border-bottom-style: none;
+  }
+
+  .barraNavegacion {
+    width: 150vw;
+    padding: 300px;
+  }
+
+  .menuHamburguesa {
+    display: block; /* Mostrar en pantallas más pequeñas */
+    position: absolute;
+    top: 5px;
+    right: -10px;
+    background-color: transparent;
+    border: none;
+    z-index: 1000;
+    width: 60px;
+    height: 60px;
+    line-height: 50px;
+  }
+
+  .menu {
+    display: none;
+    position: absolute;
+    top: auto;
+    left: auto;
+    background-color: transparent;
+    padding: auto;
+    border-radius: 5px;
+    flex-direction: column;
+    z-index: 1;
+  }
+  
+
+  .menu.abierto {
+    display: flex;
+    right: 150px;
+    top: auto;
+    font-size: 18px;
+    background-color: transparent;
+    z-index: 1000;
+  }
+
+  .menu.abierto li {
+    margin: -10px 40px;
+  }
+  
+
+  .logoBarra{
+    position:absolute;
+    left: 20px;
+    top: 15px;
+    width: 40px;
+  
+  }
+}
+@media screen and (min-width: 375px) and (max-width: 991px) {
+  /* MOBILE M */
+  .barraNavegacion ul {
+    border-bottom-style: none; 
+  }
+
+  .barraNavegacion {
+    width: 120vw;
+    padding: 400px;
+  }
+
+  .menuHamburguesa {
+    display: block;
+    position: absolute;
+    top: 5px; 
+    right: -400px;
+    background-color: transparent; 
+    border: none; 
+    z-index: 20000; 
+    width: 60px; 
+    height: 60px;
+    line-height: 50px; 
+  }
+
+  .menu {
+    display: none; /* Ocultar por defecto en pantallas pequeñas */
+    position: absolute;
+    top: -20px;
+    left: auto;
+    background-color: transparent;
+    padding: auto;
+    border-radius: 5px;
+    flex-direction: column;
+    z-index: 1;
+    width: 100vw;
+    height: 100vw;
+    justify-content: center; 
+    align-items: center; 
+  }
+  
+
+  .menu.abierto {
+    display: flex; /* Mostrar cuando el menú está abierto */
+    right: 250px;
+    top: auto;
+    font-size: 32px;
+    background-color: #A25733;
+    z-index: 3000;
+    padding: auto;
+  }
+
+  .menu.abierto li {
+    margin: -10px 0px;
+    padding: auto;
+  }
+
+  .logoBarra{
+    position:absolute;
+    left: 40px;
+    top: 20px;
+    width: 60px;
+  
+  }
+}
+@media screen and (min-width: 425px) and (max-width: 991px) {
+  /* MOBILE L */
+  .barraNavegacion ul {
+    border-bottom-style: none; /* Eliminar la línea blanca del borde inferior */
+  }
+
+  .barraNavegacion {
+    width: 100vw;
+    justify-content: center;
+    padding: 500px;
+    height: 5px;
+    padding: 1000px;
+  }
+
+  .menuHamburguesa {
+    display: block; /* Mostrar en pantallas más pequeñas */
+    position: absolute;
+    top: 5px; 
+    right: -1250px; 
+    background-color: transparent;
+    border: none;
+    z-index: 1000;
+    width: 100px;
+    height: 100px;
+    line-height: 50px;
+  }
+
+  .menu {
+    display: none; 
+    position: absolute;
+    top: -20px; 
+    left: auto;
+    background-color: transparent;
+    padding: auto;
+    border-radius: 5px;
+    flex-direction: column; 
+    z-index: 1;
+  }
+  
+
+  .menu.abierto {
+    display: flex;
+    right: 150px;
+    top: auto;
+    font-size: 32px;
+    background-color: transparent;
+    z-index: 1000;
+  }
+
+  .menu.abierto li {
+    margin: -15px -30px;
+  }
+
+  .logoBarra{
+    position:absolute;
+    left: 20px;
+    top: 40px;
+    width: 100px;
+  
+  }
+
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  /* TABLET*/
+  .menuHamburguesa {
+    display: none; /* Ocultar el botón de hamburguesa en tabletas */
+  }
+
+  .barraNavegacion li {
+    font-size: 12px;
+  }
+
+  .barraNavegacion {
+    position: absolute;
+    width: 100vw;
+    right: 30px;
+    top: -10px; 
+  }
+
+  .barraNavegacion ul {
+    border-bottom-style: solid;
+    position: relative;
+    align-content: center;
+    width: auto;
+  }
+
+  .menu {
+    display: flex !important;
+    flex-direction: row;
+    justify-content: flex-end;
+    width: 85vw;
+  }
+  
+  .logoBarra{
+    position:absolute;
+    left: -70px;
+    top: 30px;
+    width: 60px;
+  
+  }
+}
+
+@media screen and (min-width: 991px) and (max-width: 1024px) {
+  /*PANTALLAS LAPTOP L */
+  .barraNavegacion ul {
+    left: -220px;
+    top: -15px;
+  }
+  .barraNavegacion li {
+    font-size: 28px;
+  }
+  
+  .logoBarra{
+    position:absolute;
+    left: 270px;
+    top: 15px;
+    width: 80px;
+    height: auto;
+  }
+  
+}
+
+@media screen and (min-width: 991px) and (max-width: 1440px) {
+  /*PANTALLAS LAPTOP L */
+  .barraNavegacion ul {
+    left: 170px;
+    top: -25px;
+
+  }
+  .barraNavegacion li {
+    font-size: 28px;
+  }
+
+  .logoBarra{
+    position:absolute;
+    left: 220px;
+    top: 15px;
+    width: 80px;
+    height: auto;
+  }
+
+}
+
+@media screen and (min-width: 661px) and (max-width: 1024px) {
+  /*PANTALLAS LAPTOP */
+  .barraNavegacion {
+    width: 120vw;
+    position: absolute;
+    right: 130px;
+    top: -30px;
+  }
+
+  .barraNavegacion li {
+    font-size: 12px;
+  }
+
+  .logoBarra{
+    position:absolute;
+    left: 10px;
+    top: 40px;
+    width: 60px;
+    height: auto;
+  }
+
+}
+
+
+@media screen and (min-width: 2560px) {
+  /*PANTALLAS 4K */
+  .barraNavegacion li {
+    font-size: 40px;
+  }
+
+  .barraNavegacion ul {
+    left: 270px;
+
+  }
+
+
+  .logoBarra{
+    position:absolute;
+    left: 942px;
+    top: 40px;
+    width: 100px;
+    height: auto;
+  }
+}
+
+

@@ -1,0 +1,44 @@
+.cdest {
+  width: 22%;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  border-style: solid;
+  border-width: thin;
+  border-radius: 5px;
+  border-color: #070606;
+  position: relative;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.cdest h4 {
+  margin: 0;
+  padding: 12px;
+}
+
+.cdest h4 a {
+  color: rgba(157, 106, 52);
+  text-decoration: none;
+}
+
+.cdest img {
+  width: 100%;
+  height: auto;
+}
+
+.cdest p {
+  background-color: rgba(157, 106, 52, 0.84);
+  border-style: none;
+  border-radius: 10px;
+  padding: 10px 25px;
+  font-size: 0.7em;
+  position: absolute;
+  bottom: 20px;
+  right: -40px;
+  width: 40%;
+  height: auto;
+  max-height: 55px;
+  color: #ece4dd;
+  text-align: right;
+  box-sizing: border-box;
+}

@@ -1,0 +1,175 @@
+/* Estilos Generales */
+body {
+  font-family: 'Calibri', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #fff;
+  line-height: 1.6;
+}
+
+h1 {
+  text-align: center;
+  color: #000;
+  margin-top: 20px;
+}
+
+/* Contenedor de Administración */
+.admin-container {
+  text-align: center;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Estilos de Botones */
+.menu-container button {
+  padding: 10px 20px;
+  margin: 10px;
+  background-color: #333c3c;
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.menu-container button:hover {
+  background-color: #a25733;
+}
+
+/* Transiciones Suaves */
+.content-section {
+  transition: opacity 0.5s ease-in-out;
+}
+
+.content-section.enter {
+  flex-grow: 1;
+  opacity: 0;
+}
+
+.content-section.enter-active {
+  opacity: 1;
+}
+
+/* Estilos de Formularios */
+form {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  background: #ece4dd;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+form div {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="number"],
+textarea,
+select {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Botones en Formularios */
+form button {
+  width: 100%;
+  padding: 10px;
+  background-color: #ECA555;
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+form button:hover {
+  background-color: #333c3c;
+}
+
+/* Mensajes de Éxito y Error */
+.success-message {
+  color: #333c3c;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.error-message {
+  color: #ECA555;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Estilos de Enlaces */
+a {
+  display: inline-block;
+  margin-top: 20px;
+  color: #000;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Estilos de Tablas */
+table {
+  width: 100%;
+  margin: 20px auto;
+  border-collapse: collapse;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  background-color: #ece4dd;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+table thead {
+  background-color: #a25733;
+  color: #ece4dd;
+}
+
+table th,
+table td {
+  padding: 20px;
+  text-align: left;
+  border-bottom: 1px solid #ece4dd;
+}
+
+table tr:nth-child(even) {
+  background-color: #ece4dd;
+}
+
+
+/* Botones de Acción en Tablas */
+table button {
+  padding: 5px 10px;
+  background-color: #A25733;
+  border: none;
+  color: #ece4dd;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+table button:hover {
+  background-color: #ECA555;
+}
+
+.content-section {
+  flex: 1;
+}
+

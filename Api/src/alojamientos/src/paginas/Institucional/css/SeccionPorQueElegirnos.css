@@ -1,0 +1,112 @@
+/* Establecer la clase de contenedor principal como un contenedor flexible */
+
+.PorQueElegirnos{
+  display: flex;
+  width: 90%
+}
+
+/* Establecer el estilo para el contenedor individual */
+.container {
+  position: relative;
+  margin: 50px 120px;
+  overflow: visible;
+  
+}
+
+/* Estilo para las imágenes de la empresa */
+.imagen-empresa {
+  width: 100%;
+  display: block;
+  filter: drop-shadow(0px 0px 0px rgba(0,0,0,0.5));
+  left: -90px;
+}
+
+/* Estilo para la primera imagen */
+.imagen-1 {
+  max-width: 350px;
+}
+
+/* Estilo para la segunda imagen */
+.imagen-2 {
+  max-width: 310px;
+}
+
+/* Estilo para la tercera imagen */
+.imagen-3 {
+  max-width: 380px;
+}
+
+/* Estilo para las barras superpuestas */
+.barras {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  right: -80%;
+  z-index: 1;
+}
+
+/* Estilo para las diferentes barras */
+.barra-superior, .barra-media, .barra-inferior {
+  position: absolute;
+  width: 100%;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  z-index: 2;
+}
+
+/* Estilo para la barra superior */
+.barra-superior {
+  background-color: #333c3c;
+  top: 0px;
+}
+
+/* Estilo para la barra media */
+.barra-media {
+  background-color: #333c3c;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Estilo para la barra inferior */
+.barra-inferior {
+  background-color: #333c3c;
+  bottom: 0px;
+}
+
+/* Estilos para las barras adicionales */
+.barra-superior-adicional, .barra-media-adicional, .barra-inferior-adicional {
+  position: absolute;
+  width: 20%;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  z-index: 2;
+}
+
+/* Estilo para las barras adicionales en la parte superior */
+.barra-superior-adicional {
+  background-color: #ECA555;
+  left: 80%;
+  top: 0px;
+}
+
+/* Estilo para las barras adicionales en la parte media */
+.barra-media-adicional {
+  background-color: #ECA555;
+  top: 50%;
+  left: 80%;
+  transform: translateY(-50%);
+}
+
+/* Estilo para las barras adicionales en la parte inferior */
+.barra-inferior-adicional {
+  background-color: #ECA555;
+  left: 80%;
+  bottom: 0px;
+}
