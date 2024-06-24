@@ -3,7 +3,7 @@ import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import '../css/ListarAlojamientos.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHome, faPencilAlt, faKey, faCheckCircle, faTimesCircle, faMapMarkerAlt, faMoneyBillAlt, faBed, faBath, faList } from '@fortawesome/free-solid-svg-icons';
+import { faHome, faPencilAlt, faCheckCircle, faTimesCircle, faMapMarkerAlt, faMoneyBillAlt, faBed, faBath, faFilter } from '@fortawesome/free-solid-svg-icons';
 
 const ListarAlojamientos = () => {
   const [alojamientos, setAlojamientos] = useState([]);
@@ -106,7 +106,7 @@ const ListarAlojamientos = () => {
       <ToastContainer />
       <div className="search-and-list-container">
         <div className="search-form">
-          <h2><FontAwesomeIcon icon={faList} /> Listado de Alojamientos</h2>
+          <h2><FontAwesomeIcon icon={faFilter} /> Filtrado de Alojamientos</h2>
           <div className="price-filter">
             <label><FontAwesomeIcon icon={faMoneyBillAlt} /> Precio mínimo:</label>
             <select value={precioMinimo} onChange={(e) => setPrecioMinimo(parseInt(e.target.value))}>
@@ -153,13 +153,13 @@ const ListarAlojamientos = () => {
             {currentAlojamientos.length > 0 ? (
               currentAlojamientos.map((alojamiento) => (
                 <div className="alojamiento-card" key={alojamiento.idAlojamiento} onClick={() => handleShowDetails(alojamiento)}>
-                  <h3><FontAwesomeIcon icon={faHome} /> {alojamiento.Titulo}</h3>
-                  <p><FontAwesomeIcon icon={faPencilAlt} /> {alojamiento.Descripcion}</p>
-                  <p><FontAwesomeIcon icon={faMapMarkerAlt} /> Ubicacion: {alojamiento.Longitud}, {alojamiento.Latitud}</p>
-                  <p><FontAwesomeIcon icon={faMoneyBillAlt} /> Precio por Día: {alojamiento.PrecioPorDia}</p>
-                  <p><FontAwesomeIcon icon={faBed} /> Cantidad de Dormitorios: {alojamiento.CantidadDormitorios}</p>
-                  <p><FontAwesomeIcon icon={faBath} /> Cantidad de Baños: {alojamiento.CantidadBanios}</p>
-                  <p><FontAwesomeIcon icon={alojamiento.Estado === 'Disponible' ? faCheckCircle : faTimesCircle} /> Estado: {alojamiento.Estado}</p>
+                  <h3 className='text-id' ><FontAwesomeIcon icon={faHome} /> {alojamiento.Titulo}</h3>
+                  <p><FontAwesomeIcon icon={faPencilAlt} /> <span className="text-id">Descripción:</span> {alojamiento.Descripcion}</p>
+                  <p><FontAwesomeIcon icon={faMapMarkerAlt} /> <span className="text-id">Ubicacion: </span>{alojamiento.Longitud}, {alojamiento.Latitud}</p>
+                  <p><FontAwesomeIcon icon={faMoneyBillAlt} /> <span className="text-id">Precio por Día: </span> {alojamiento.PrecioPorDia}</p>
+                  <p><FontAwesomeIcon icon={faBed} /> <span className="text-id">Cantidad de Dormitorios: </span> {alojamiento.CantidadDormitorios}</p>
+                  <p><FontAwesomeIcon icon={faBath} /> <span className="text-id">Cantidad de Baños:</span> {alojamiento.CantidadBanios}</p>
+                  <p><FontAwesomeIcon icon={alojamiento.Estado === 'Disponible' ? faCheckCircle : faTimesCircle} /> <span className="text-id"> Estado: </span> {alojamiento.Estado}</p>
 
                   {/* Mostrar imágenes */}
                   {imagenesAlojamientos[alojamiento.idAlojamiento] && (
