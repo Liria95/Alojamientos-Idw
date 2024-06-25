@@ -1,47 +1,17 @@
-/* Establecer la clase de contenedor principal como un contenedor flexible */
-
-.PorQueElegirnos{
+.PorQueElegirnos {
   display: flex;
-  width: 90%
+  width: 90%;
 }
 
-/* Establecer el estilo para el contenedor individual */
 .container {
   position: relative;
   margin: 50px 120px;
   overflow: visible;
-  
 }
 
-/* Estilo para las imágenes de la empresa */
-.imagen-empresa {
+.PorQueElegirnos .carousel .slide img {
   width: 100%;
-  display: block;
-  filter: drop-shadow(0px 0px 0px rgba(0,0,0,0.5));
-  left: -90px;
-}
-
-/* Estilo para la primera imagen */
-.imagen-1 {
-  max-width: 350px;
-}
-
-.imagen-2 {
-  max-width: 350px;
-}
-
-.imagen-3 {
-  max-width: 350px;
-}
-
-/* Estilo para la segunda imagen */
-.imagen-4 .imagen-5 .imagen-6 {
-  max-width: 310px;
-}
-
-/* Estilo para la tercera imagen */
-.imagen-7 {
-  max-width: 380px;
+  height: 200px;
 }
 
 /* Estilo para las barras superpuestas */
@@ -55,7 +25,9 @@
 }
 
 /* Estilo para las diferentes barras */
-.barra-superior, .barra-media, .barra-inferior {
+.barra-superior,
+.barra-media,
+.barra-inferior {
   position: absolute;
   width: 100%;
   height: 30px;
@@ -86,7 +58,9 @@
 }
 
 /* Estilos para las barras adicionales */
-.barra-superior-adicional, .barra-media-adicional, .barra-inferior-adicional {
+.barra-superior-adicional,
+.barra-media-adicional,
+.barra-inferior-adicional {
   position: absolute;
   width: 20%;
   height: 30px;
@@ -99,14 +73,14 @@
 
 /* Estilo para las barras adicionales en la parte superior */
 .barra-superior-adicional {
-  background-color: #ECA555;
+  background-color: #eca555;
   left: 80%;
   top: 0px;
 }
 
 /* Estilo para las barras adicionales en la parte media */
 .barra-media-adicional {
-  background-color: #ECA555;
+  background-color: #eca555;
   top: 50%;
   left: 80%;
   transform: translateY(-50%);
@@ -114,7 +88,49 @@
 
 /* Estilo para las barras adicionales en la parte inferior */
 .barra-inferior-adicional {
-  background-color: #ECA555;
+  background-color: #eca555;
   left: 80%;
   bottom: 0px;
+}
+
+/* Estilos adicionales para los textos */
+.texto-superior {
+  font-size: 14px;
+  font-weight: bold;
+  color: #fff;
+  position: absolute;
+  top: 3px;
+  left: 30px;
+}
+
+.texto-media {
+  font-size: 14px;
+  font-weight: bold;
+  color: #fff;
+  position: absolute;
+  top: 50%;
+  left: 30px;
+  transform: translateY(-50%);
+}
+
+.texto-inferior {
+  font-size: 14px;
+  font-weight: bold;
+  color: #fff;
+  position: absolute;
+  bottom: 3px;
+  top: 3px;
+  left: 30px;
+}
+
+/* Estilos adicionales para los porcentajes */
+.barras .porcentaje-superior,
+.barras .porcentaje-media,
+.barras .porcentaje-inferior {
+  font-size: 14px;
+  font-weight: bolder;
+  color: #000;
+  position: absolute;
+  top: 3px;
+  left: 8px;
 }
