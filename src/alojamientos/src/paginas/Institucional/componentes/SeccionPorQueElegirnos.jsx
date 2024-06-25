@@ -1,7 +1,5 @@
 import React from 'react';
 import '../css/SeccionPorQueElegirnos.css';
-
-// Importa la imagen
 import imagen_empresa1 from '../../assets/imagen_empresa1.jpg';
 
 function PorQueElegirnos() {
@@ -9,7 +7,6 @@ function PorQueElegirnos() {
     <div className="PorQueElegirnos">
       {[1, 2, 3].map((i) => (
         <div key={i} className={`container container${i}`}>
-          {/* Reemplaza todas las imágenes con imagen_empresa1 */}
           <img src={imagen_empresa1} alt={`Empresa XYZ ${i}`} className={`imagen-empresa imagen-${i}`} />
           <div className="barras">
             <div className="barra-superior">
