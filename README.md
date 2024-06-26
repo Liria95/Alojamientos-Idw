@@ -1,3 +1,25 @@
+# Intrucciones para el funcionamiento de la aplicacion:
+
+1. Instalacion de dependencias e inicializacion de servidor para la API
+
+2. Instalacion de dependencias especificadas en el archivo package.json ubicado en: 
+Alojamientos-Idw\src\alojamientos
+
+3. Inicializacion de servidor para la aplicacion de alojamientos: parado en ubicacion
+Alojamientos-Idw\src\alojamientos, comando "npm run start"
+
+4. Para la creacion de imagenes de los alojamientos, las imagenes deben ingresarse con
+su ruta alternativa. La ruta debe estar especificada de la siguiente manera:
+/images/nombreAlojamiento.jpg
+
+Las imagenes disponibles actualmente son:
+nombreAlojamiento = casa1 a casa5, departamento1 a departamento 5,
+cabana1 a cabana4, hotel1 a hotel5.
+
+Dichas imagenes estan ubicadas en: Alojamientos-Idw\src\alojamientos\public\images
+en caso de querer agregar mas imagenes.
+
+
 # API de Alojamientos
 
 Esta API permite gestionar alojamientos, como casas, apartamentos, hoteles, etc.
