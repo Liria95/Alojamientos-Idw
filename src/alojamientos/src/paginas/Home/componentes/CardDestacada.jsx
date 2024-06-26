@@ -60,7 +60,7 @@ export function CardDestacada({ nombre }) {
     return (
         <div className="destacadasCards">
             {alojamientos.length > 0 ? (
-                alojamientos.slice(0, 3).map((alojamiento) => {
+                alojamientos.slice(0, 4).map((alojamiento) => {
                     const imagenesAlojamiento = imagenes.filter(img => img.idAlojamiento === alojamiento.idAlojamiento);
                     return (
                         <div className="cdest" key={alojamiento.idAlojamiento}>

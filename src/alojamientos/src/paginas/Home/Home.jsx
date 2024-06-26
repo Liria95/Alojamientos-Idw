@@ -18,7 +18,6 @@ export function Home() {
             <Presentacion />
             <Seccion ClassName='destacadas' nombre='ALOJAMIENTOS DESTACADOS' />
             <SeccionDestacadas />
-            <CardDestacada />
             <Seccion ClassName='categoriaPropiedades' nombre='TIPOS DE ALOJAMIENTOS' />
             <SeccionTiposA className='cardsCategorias' />
             <Footer/> 

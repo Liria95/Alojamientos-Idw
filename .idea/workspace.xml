@@ -6,48 +6,30 @@
   <component name="ChangeListManager">
     <list default="true" id="db73030a-17a2-431f-acdd-8b6fa90ed1b2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/alojamientos/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/alojamientos/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/alojamientos/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/alojamientos/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/alojamientos/src/paginas/Home/Home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/alojamientos/src/paginas/Home/Home.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/alojamientos/src/paginas/Home/componentes/CardDestacada.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/alojamientos/src/paginas/Home/componentes/CardDestacada.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/alojamientos/src/paginas/Home/componentes/SeccionDestacadas.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/alojamientos/src/paginas/Home/componentes/SeccionDestacadas.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/alojamientos/src/paginas/Home/css/CardDestacada.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/alojamientos/src/paginas/Home/css/CardDestacada.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/config/dbConfig.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/dbConfig.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/public/contacto.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/public/css/styles.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/public/css/stylesInst.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/public/img/1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/public/img/1000_F_589191718_2HOhelQTqJZ4L0OK3XTmhyO9bBagHUBc.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/public/img/2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/public/img/3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/public/img/4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/public/img/5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/public/img/6.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/public/img/64ad29af51b1728fb632db4b001b50c0.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/public/img/AdobeStock_514239297_Preview.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/public/img/LogoRental.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/public/img/Screenshot 2024-05-24 120356.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/public/img/Screenshot 2024-05-24 121237.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/public/img/Screenshot 2024-05-24 121350.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/public/img/casa-contacto.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/public/img/casa-portada.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/public/img/casa.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/public/img/casaIMG.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/public/img/casaPortada2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/public/img/casalogo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/public/img/casalogo.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/public/img/empresaIMG.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/public/img/foto_miembro1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/public/img/foto_miembro2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/public/img/foto_miembro3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/public/img/foto_miembro4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/public/img/imagen_empresa1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/public/img/imagen_empresa2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/public/img/imagen_empresa3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/public/img/index.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/public/img/logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/public/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/public/institucional.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 0
+}</component>
+  <component name="ProjectId" id="2iO2GmIGWOsBWH2auTTKYb30g87" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="autoscrollToSource" value="true" />
@@ -59,11 +41,32 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
-    "node.js.selected.package.tslint": "(autodetect)"
+    "last_opened_file_path": "F:/Material clases - Universidad/TUDW - UNER/3 cuatrimestre/Introduccion al desarrollo Web/TP_Integrador_final/TP_GH_Liria/Alojamientos-Idw",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="db73030a-17a2-431f-acdd-8b6fa90ed1b2" name="Changes" comment="" />
+      <created>1719347213116</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1719347213116</updated>
+      <workItem from="1719347216090" duration="1432000" />
+      <workItem from="1719352274935" duration="233000" />
+      <workItem from="1719378855793" duration="2271000" />
+    </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
 </project>

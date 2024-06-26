@@ -5,7 +5,7 @@ import '../css/SeccionDestacadas.css';
 export function SeccionDestacadas() {
     return (
         <div>
-
+            <CardDestacada />
             <div className="navDestacadas">
                 <ul>
                     <li><a href="#">1</a></li>
