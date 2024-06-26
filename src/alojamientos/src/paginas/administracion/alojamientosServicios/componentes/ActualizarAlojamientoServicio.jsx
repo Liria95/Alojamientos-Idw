@@ -3,6 +3,8 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEdit, faTrashAlt, faList, faIdCard, faIdCardAlt, faIdCardClip, faTimesCircle, faCarAlt } from '@fortawesome/free-solid-svg-icons';
 import '../css/ActualizarAlojamientoServicio.css';
 
 const ActualizarAlojamientoServicio = () => {
@@ -41,6 +43,27 @@ const ActualizarAlojamientoServicio = () => {
     }
   };
 
+  const handleDelete = async () => {
+    const endpoint = `http://localhost:3001/alojamientosServicios/deleteAlojamientoServicio/${selectedRelation.idAlojamientoServicio}`;
+
+    try {
+      const response = await fetch(endpoint, {
+        method: 'DELETE',
+      });
+
+      if (!response.ok) {
+        throw new Error('Error al eliminar la relación');
+      }
+
+      toast.success('Relación eliminada con éxito');
+      fetchAlojamientoServicios();
+      setSelectedRelation(null);
+    } catch (error) {
+      console.error('Error:', error);
+      toast.error(error.message || 'Error al eliminar la relación');
+    }
+  };
+
   const validationSchema = Yup.object().shape({
     idAlojamiento: Yup.string().required('ID de Alojamiento es requerido'),
     idServicio: Yup.string().required('ID de Servicio es requerido'),
@@ -67,7 +90,9 @@ const ActualizarAlojamientoServicio = () => {
     <div>
       {selectedRelation && (
         <div>
-          <h1>Actualizar Relación entre Alojamiento y Servicio</h1>
+          <h1>
+            <FontAwesomeIcon icon={faEdit} /> Actualizar Relación entre Alojamiento y Servicio
+          </h1>
           <Formik
             initialValues={{
               idAlojamiento: selectedRelation.idAlojamiento,
@@ -79,17 +104,19 @@ const ActualizarAlojamientoServicio = () => {
             {({ isSubmitting, resetForm }) => (
               <Form>
                 <div>
-                  <label>ID de Alojamiento:</label>
+                  <label><FontAwesomeIcon icon={faCarAlt} /> ID de Alojamiento:</label>
                   <Field type="text" name="idAlojamiento" />
                   <ErrorMessage name="idAlojamiento" component="div" className="error" />
                 </div>
                 <div>
-                  <label>ID de Servicio:</label>
+                  <label><FontAwesomeIcon icon={faIdCardAlt} /> ID de Servicio:</label>
                   <Field type="text" name="idServicio" />
                   <ErrorMessage name="idServicio" component="div" className="error" />
                 </div>
                 <div className="button-group">
-                  <button type="submit" className="actualizar" disabled={isSubmitting}>Actualizar</button>
+                  <button type="submit" className="actualizar" disabled={isSubmitting}>
+                    <FontAwesomeIcon icon={faEdit} /> Actualizar
+                  </button>
                   <button
                     type="button"
                     className="cancel-button"
@@ -98,7 +125,7 @@ const ActualizarAlojamientoServicio = () => {
                       setSelectedRelation(null);
                     }}
                   >
-                    Cancelar
+                    <FontAwesomeIcon icon={faTimesCircle} /> Cancelar
                   </button>
                 </div>
               </Form>
@@ -107,21 +134,25 @@ const ActualizarAlojamientoServicio = () => {
         </div>
       )}
 
-      <h2>Lista de Relaciones entre Alojamiento y Servicio</h2>
+      <h2>
+        <FontAwesomeIcon icon={faList} /> Lista de Relaciones entre Alojamiento y Servicio
+      </h2>
       <div className="tarjetas-contenedor">
         {alojamientoServicios.length > 0 ? (
           alojamientoServicios.map((relacion) => (
             <div key={relacion.idAlojamientoServicio} className="tarjeta">
               <p>
-                <span className="text-id">ID de Relación:</span> {relacion.idAlojamientoServicio}
+                <span className="text-id"><FontAwesomeIcon icon={faIdCard} />  ID de Relación:</span> {relacion.idAlojamientoServicio}
               </p>
               <p>
-                <span className="text-id">ID de Alojamiento:</span> {relacion.idAlojamiento}
+                <span className="text-id"><FontAwesomeIcon icon={faIdCardClip} /> ID de Alojamiento:</span> {relacion.idAlojamiento}
               </p>
               <p>
-                <span className="text-id">ID de Servicio:</span> {relacion.idServicio}
+                <span className="text-id"><FontAwesomeIcon icon={faIdCard} /> ID de Servicio:</span> {relacion.idServicio}
               </p>
-              <button onClick={() => setSelectedRelation(relacion)}>Actualizar</button>
+              <button onClick={() => setSelectedRelation(relacion)}>
+                <FontAwesomeIcon icon={faEdit} /> Actualizar
+              </button>
             </div>
           ))
         ) : (

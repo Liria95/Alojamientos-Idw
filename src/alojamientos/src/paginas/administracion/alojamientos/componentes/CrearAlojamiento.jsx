@@ -133,13 +133,27 @@ const CrearAlojamiento = () => {
             </div>
             <div>
               <label>Cantidad de Dormitorios:</label>
-              <Field type="number" name="CantidadDormitorios" />
+              <Field as="select" name="CantidadDormitorios">
+                <option value="">Selecciona cantidad de dormitorios</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5 o más</option>
+              </Field>
               <ErrorMessage name="CantidadDormitorios" component="div" className="error" />
             </div>
             <div>
               <label>Cantidad de Baños:</label>
-              <Field type="number" name="CantidadBanios" /> 
-              <ErrorMessage name="CantidadBanios" component="div" className="error" /> 
+              <Field as="select" name="CantidadBanios">
+                <option value="">Selecciona cantidad de baños</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5 o más</option>
+              </Field>
+              <ErrorMessage name="CantidadBanios" component="div" className="error" />
             </div>
             <div>
               <label>Estado:</label>

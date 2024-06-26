@@ -76,11 +76,11 @@ const ActualizarServicio = () => {
   };
 
   return (
-    <div className="actualizar-servicio-container">
+    <div className="container">
       {showForm && selectedService && ( // Renderizado condicional del formulario
-        <form onSubmit={handleSubmit} className="form-actualizar">
-          <h2>Actualizar Nombre del Servicio</h2>
-          <p>ID: {selectedService.idServicio}</p>
+        <form onSubmit={handleSubmit} className="form">
+          <h2><FontAwesomeIcon icon={faSyncAlt} /> Actualizar Nombre del Servicio</h2>
+          <p className='text-id'>Id: {selectedService.idServicio}</p>
           <label>
             Nuevo Nombre:
             <input type="text" value={nombre} onChange={(e) => setNombre(e.target.value)} required />
@@ -96,8 +96,12 @@ const ActualizarServicio = () => {
         {servicios.length > 0 ? (
           servicios.map((servicio) => (
             <div key={servicio.idServicio} className="tarjeta">
-              <p><FontAwesomeIcon icon={faIdCard} /> ID: {servicio.idServicio}</p>
-              <p><FontAwesomeIcon icon={faTrashAlt} /> Nombre: {servicio.Nombre}</p>
+              <p>
+                <span className='text-id'> <FontAwesomeIcon icon={faIdCard} /> Id: </span> {servicio.idServicio}
+              </p>
+              <p>
+                <span className='text-id'> <FontAwesomeIcon icon={faTrashAlt} /> Nombre:</span> {servicio.Nombre}
+              </p>
               <button onClick={() => handleUpdateService(servicio)}><FontAwesomeIcon icon={faSyncAlt} /> Actualizar</button>
             </div>
           ))

@@ -6,7 +6,7 @@
   margin: auto;
   margin-top: 20px;
   overflow: hidden;
-  max-height: 480px;
+  max-height: auto;
 }
 
 .cdestNoVisible {

@@ -3,6 +3,8 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBed, faConciergeBell, faIdCard, faIdCardClip, faList } from '@fortawesome/free-solid-svg-icons';
 
 const CrearAlojamientoServicio = () => {
     const [alojamientos, setAlojamientos] = useState([]);
@@ -94,61 +96,68 @@ const CrearAlojamientoServicio = () => {
     });
 
     return (
-        <div>
-            <h1>Crear Nueva Relación entre Alojamiento y Servicio</h1>
-            <Formik
-                initialValues={{ idAlojamiento: '', idServicio: '' }}
-                validationSchema={validationSchema}
-                onSubmit={handleSubmit}
-            >
-                {({ isSubmitting, setFieldValue }) => (
-                    <Form>
-                        <div>
-                            <label>ID de Alojamiento:</label>
-                            <Field as="select" name="idAlojamiento">
-                                <option value="">Seleccionar Alojamiento</option>
-                                {alojamientos.map((alojamiento) => (
-                                    <option key={alojamiento.idAlojamiento} value={alojamiento.idAlojamiento}>
-                                        {alojamiento.Titulo}
-                                    </option>
-                                ))}
-                            </Field>
-                            <ErrorMessage name="idAlojamiento" component="div" className="error" />
-                        </div>
-                        <div>
-                            <label>Nombre de Servicio:</label>
-                            <Field as="select" name="idServicio" onChange={(e) => {
-                                const selectedServicio = servicios.find(servicio => servicio.idServicio === e.target.value);
-                                setFieldValue('idServicio', e.target.value);
-                                //setFieldValue('nombreServicio', selectedServicio.Nombre);
-                            }}>
-                                <option value="">Seleccionar Servicio</option>
-                                {servicios.map((servicio) => (
-                                    <option key={servicio.idServicio} value={servicio.idServicio}>
-                                        {servicio.Nombre}
-                                    </option>
-                                ))}
-                            </Field>
-                            <ErrorMessage name="idServicio" component="div" className="error" />
-                        </div>
-                        <button type="submit" disabled={isSubmitting}>
-                            Crear
-                        </button>
-                    </Form>
-                )}
-            </Formik>
+        <div className="container">
+            <h1><FontAwesomeIcon icon={faBed} /> Crear Nueva Relación entre Alojamiento y Servicio <FontAwesomeIcon icon={faConciergeBell} /></h1>
+            <div className="form-container">
+                <Formik
+                    initialValues={{ idAlojamiento: '', idServicio: '' }}
+                    validationSchema={validationSchema}
+                    onSubmit={handleSubmit}
+                >
+                    {({ isSubmitting, setFieldValue }) => (
+                        <Form className="form">
+                            <div className="form-field">
+                                <label htmlFor="idAlojamiento" className="form-label">ID de Alojamiento:</label>
+                                <Field as="select" name="idAlojamiento" className="select-field">
+                                    <option value="">Seleccionar Alojamiento</option>
+                                    {alojamientos.map((alojamiento) => (
+                                        <option key={alojamiento.idAlojamiento} value={alojamiento.idAlojamiento}>
+                                            {alojamiento.Titulo}
+                                        </option>
+                                    ))}
+                                </Field>
+                                <ErrorMessage name="idAlojamiento" component="div" className="error" />
+                            </div>
+                            <div className="form-field">
+                                <label htmlFor="idServicio" className="form-label">Nombre de Servicio:</label>
+                                <Field as="select" name="idServicio" className="select-field" onChange={(e) => {
+                                    const selectedServicio = servicios.find(servicio => servicio.idServicio === e.target.value);
+                                    setFieldValue('idServicio', e.target.value);
+                                }}>
+                                    <option value="">Seleccionar Servicio</option>
+                                    {servicios.map((servicio) => (
+                                        <option key={servicio.idServicio} value={servicio.idServicio}>
+                                            {servicio.Nombre}
+                                        </option>
+                                    ))}
+                                </Field>
+                                <ErrorMessage name="idServicio" component="div" className="error" />
+                            </div>
+                            <button type="submit" disabled={isSubmitting} className="button">
+                                Crear
+                            </button>
+                        </Form>
+                    )}
+                </Formik>
+            </div>
 
             <div className="list-container">
                 <ToastContainer />
-                <h1>Lista de Alojamientos con Servicios</h1>
+                <h2 className="list-header"><FontAwesomeIcon icon={faList} /> Lista de Alojamientos con Servicios</h2>
                 {error && <div className="error-message">{error}</div>}
                 <div className="tarjetas-contenedor">
                     {alojamientosServicios.length > 0 ? (
                         alojamientosServicios.map((item) => (
                             <div key={item.idAlojamientoServicio} className="tarjeta">
-                                <p><strong>ID Alojamiento Servicio:</strong> {item.idAlojamientoServicio}</p>
-                                <p><strong>ID Alojamiento:</strong> {item.idAlojamiento}</p>
-                                <p><strong>ID Servicio:</strong> {item.idServicio} </p>
+                                <p>
+                                  <span className="text-id"><FontAwesomeIcon icon={faIdCard} /> Id Alojamiento Servicio: </span> {item.idAlojamientoServicio}
+                                </p>
+                                <p>
+                                  <span className="text-id"><FontAwesomeIcon icon={faIdCardClip} /> Id de Alojamiento:</span> {item.idAlojamiento}
+                                </p>
+                                <p>
+                                  <span className="text-id"><FontAwesomeIcon icon={faIdCard} /> ID de Servicio:</span> {item.idServicio}
+                                </p>
                             </div>
                         ))
                     ) : (

@@ -1,28 +1,22 @@
-/* Estilos Generales */
-body {
-  font-family: 'Calibri', sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #fff;
-  line-height: 1.6;
-}
-
-h1 {
-  text-align: center;
-  color: #000;
-  margin-top: 20px;
-}
-
-/* Contenedor de Administración */
-.admin-container {
-  text-align: center;
-  padding: 20px;
+.menu-container {
   display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+  flex-wrap: wrap; /* Para que los botones se ajusten si no hay suficiente espacio horizontal */
+  justify-content: center; /* Centra los botones horizontalmente */
 }
 
-/* Estilos de Botones */
+.admin-container h1 {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  color: #000;
+  position: relative;
+  top: -150px;
+}
+/* Estilo para el botón activo del menú */
+.menu-container button.active {
+  background-color: #a25733;
+}
+
 .menu-container button {
   padding: 10px 20px;
   margin: 10px;
@@ -33,25 +27,55 @@ h1 {
   cursor: pointer;
   border-radius: 4px;
   transition: background-color 0.3s ease;
+  position: relative;
+  top: -60px;
 }
 
+.menu-containeradmin button {
+  padding: 10px 20px;
+  margin: 10px;
+  background-color: #333c3c;
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+  position: relative;
+  top: -80px;
+}
+.menu-container2 button {
+  padding: 10px 20px;
+  margin: 10px;
+  background-color: #333c3c;
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+  position: relative;
+  top: -160px;
+}
 .menu-container button:hover {
   background-color: #a25733;
 }
-
-/* Transiciones Suaves */
-.content-section {
-  transition: opacity 0.5s ease-in-out;
+/* Estilo para el botón de retorno a la administración */
+.menu-containeradmin .toggle-button {
+  background-color: #333c3c;
+  color: white;
+  padding: 10px 20px;
+  margin-top: -20px;
+  position: absolute;
+  top: 40px;
+  left: 40%;
+  transform: translateX(-50%);
 }
 
-.content-section.enter {
-  flex-grow: 1;
-  opacity: 0;
+.menu-container .toggle-button:hover {
+  background-color: #a25733;
 }
 
-.content-section.enter-active {
-  opacity: 1;
-}
 
 /* Estilos de Formularios */
 form {

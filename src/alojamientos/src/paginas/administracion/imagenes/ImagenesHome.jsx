@@ -25,7 +25,7 @@ const AlojamientosHome = () => {
     <div className={`admin-container ${section ? 'hidden' : ''}`}>
       <ToastContainer />
       <h1><FontAwesomeIcon icon={faBed} /> Imagenes</h1>
-      <div className={`menu-container ${section ? 'hidden' : ''}`}>
+      <div className={`menu-container2 ${section ? 'hidden' : ''}`}>
         <button className={section === 'crear' ? 'active' : ''} onClick={() => handleClick('crear')}>
           <FontAwesomeIcon icon={faPlus} /> Crear Imagen
         </button>

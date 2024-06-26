@@ -1,22 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import { toast } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEdit, faTrash, faSave, faTimes, faImage, faImages  } from '@fortawesome/free-solid-svg-icons';
 
 const EditarImagen = () => {
-  // Estados para alojamientos, imágenes y la imagen actual seleccionada
   const [alojamientos, setAlojamientos] = useState([]);
   const [imagenes, setImagenes] = useState([]);
   const [currentImagen, setCurrentImagen] = useState(null);
 
-  // useEffect para cargar alojamientos e imágenes al montar el componente
   useEffect(() => {
     fetchAlojamientos();
     fetchImagenes();
   }, []);
 
-  // Función para obtener los alojamientos del backend
   const fetchAlojamientos = async () => {
     const endpoint = 'http://localhost:3001/alojamiento/getAlojamientos';
     try {
@@ -33,7 +32,6 @@ const EditarImagen = () => {
     }
   };
 
-  // Función para obtener las imágenes del backend
   const fetchImagenes = async () => {
     const endpoint = 'http://localhost:3001/imagen/getAllImagenes';
     try {
@@ -50,13 +48,11 @@ const EditarImagen = () => {
     }
   };
 
-  // Validación del formulario con Yup
   const validationSchema = Yup.object().shape({
     idAlojamiento: Yup.string().required('Alojamiento es requerido'),
     RutaArchivo: Yup.string().required('Ruta del archivo es requerida'),
   });
 
-  // Función para manejar el envío del formulario
   const handleSubmit = async (values, { setSubmitting, resetForm }) => {
     const endpoint = `http://localhost:3001/imagen/updateImagen/${currentImagen.idImagen}`;
     try {
@@ -74,7 +70,7 @@ const EditarImagen = () => {
 
       toast.success('Imagen actualizada con éxito');
       resetForm();
-      fetchImagenes(); // Actualiza la lista de imágenes después de la actualización
+      fetchImagenes();
       setCurrentImagen(null);
     } catch (error) {
       console.error('Error:', error);
@@ -84,7 +80,6 @@ const EditarImagen = () => {
     }
   };
 
-  // Función para manejar la eliminación de una imagen
   const handleDelete = async (idImagen) => {
     const endpoint = `http://localhost:3001/imagen/deleteImagen/${idImagen}`;
     try {
@@ -97,21 +92,20 @@ const EditarImagen = () => {
       }
 
       toast.success('Imagen eliminada con éxito');
-      fetchImagenes(); // Actualiza la lista de imágenes después de la eliminación
+      fetchImagenes();
     } catch (error) {
       console.error('Error:', error);
       toast.error(error.message || 'Error al eliminar la imagen');
     }
   };
 
-  // Función para manejar la edición de una imagen
   const handleEdit = (imagen) => {
     setCurrentImagen(imagen);
   };
 
   return (
-    <div>
-      <h1>Editar o eliminar Imágenes</h1>
+    <div className="container">
+      <h1><FontAwesomeIcon icon={faImage} /> Editar o <FontAwesomeIcon icon={faTrash} /> Eliminar Imágenes</h1>
       {currentImagen ? (
         <Formik
           initialValues={{
@@ -122,10 +116,10 @@ const EditarImagen = () => {
           onSubmit={handleSubmit}
         >
           {({ isSubmitting }) => (
-            <Form>
-              <div>
+            <Form className="form">
+              <div className="form-field">
                 <label>Alojamiento:</label>
-                <Field as="select" name="idAlojamiento">
+                <Field as="select" name="idAlojamiento" className="select-field">
                   <option value="">Selecciona un alojamiento</option>
                   {alojamientos.map((alojamiento) => (
                     <option key={alojamiento.idAlojamiento} value={alojamiento.idAlojamiento}>
@@ -135,16 +129,16 @@ const EditarImagen = () => {
                 </Field>
                 <ErrorMessage name="idAlojamiento" component="div" className="error" />
               </div>
-              <div>
+              <div className="form-field">
                 <label>Ruta del Archivo:</label>
-                <Field type="text" name="RutaArchivo" />
+                <Field type="text" name="RutaArchivo" className="input-field" />
                 <ErrorMessage name="RutaArchivo" component="div" className="error" />
               </div>
-              <button type="submit" className='boton-actualizar' disabled={isSubmitting}>
-                Actualizar
+              <button type="submit" disabled={isSubmitting} className="button">
+                <FontAwesomeIcon icon={faSave} /> Actualizar
               </button>
-              <button type="button" onClick={() => setCurrentImagen(null)}>
-                Cancelar
+              <button type="button" onClick={() => setCurrentImagen(null)} className="button cancel-button">
+                <FontAwesomeIcon icon={faTimes} /> Cancelar
               </button>
             </Form>
           )}
@@ -152,13 +146,14 @@ const EditarImagen = () => {
       ) : (
         <p>Selecciona una imagen para editar.</p>
       )}
+      <ToastContainer />
 
-      <h2>Lista de Imágenes</h2>
+      <h2><FontAwesomeIcon icon={faImages} /> Lista de Imágenes</h2>
       <div className="tarjetas-contenedor">
         {imagenes.length > 0 ? (
           imagenes.map((imagen) => (
             <div key={imagen.idImagen} className="tarjeta">
-              <img src={imagen.RutaArchivo} alt={`Imagen ${imagen.idImagen}`} />
+              <img src={imagen.RutaArchivo} alt={`Imagen ${imagen.idImagen}`} className="imagen" />
               <div className="tarjeta-info">
                 <p>
                   <span className="text-imagen">Imagen:</span> {imagen.idImagen}
@@ -167,11 +162,14 @@ const EditarImagen = () => {
                   <span className="text-url">URL:</span> {imagen.RutaArchivo}
                 </p>
                 <p>
-                  <span className='text-titulo'>Título del Alojamiento:{' '}</span>
-                  {alojamientos.find((a) => a.idAlojamiento === imagen.idAlojamiento)?.Titulo || 'N/A'}
+                  <span className="text-titulo">Título del Alojamiento:</span> {alojamientos.find((a) => a.idAlojamiento === imagen.idAlojamiento)?.Titulo || 'N/A'}
                 </p>
-                <button className='boton-editar' onClick={() => handleEdit(imagen)}>Editar</button>
-                <button className='boton-eliminar' onClick={() => handleDelete(imagen.idImagen)}>Eliminar</button>
+                <button className="boton-editar" onClick={() => handleEdit(imagen)}>
+                  <FontAwesomeIcon icon={faEdit} /> Editar
+                </button>
+                <button className="boton-eliminar" onClick={() => handleDelete(imagen.idImagen)}>
+                  <FontAwesomeIcon icon={faTrash} /> Eliminar
+                </button>
               </div>
             </div>
           ))

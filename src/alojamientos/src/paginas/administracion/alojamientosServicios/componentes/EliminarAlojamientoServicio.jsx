@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrashAlt, faIdCard, faIdCardClip, faList } from '@fortawesome/free-solid-svg-icons';
 
 const EliminarAlojamientoServicio = () => {
   const [alojamientoServicios, setAlojamientoServicios] = useState([]);
@@ -48,25 +50,27 @@ const EliminarAlojamientoServicio = () => {
 
   return (
     <div>
-      <h2>Lista de Relaciones entre Alojamiento y Servicio</h2>
+      <h2>
+        <FontAwesomeIcon icon={faList} /> Lista de Relaciones entre Alojamiento y Servicio
+      </h2>
       <div className="tarjetas-contenedor">
         {alojamientoServicios.length > 0 ? (
           alojamientoServicios.map((relacion) => (
             <div key={relacion.idAlojamientoServicio} className="tarjeta">
               <p>
-                <span className="text-id">ID de Relación:</span> {relacion.idAlojamientoServicio}
+                <span className="text-id"><FontAwesomeIcon icon={faIdCard} /> ID de Relación:</span> {relacion.idAlojamientoServicio}
               </p>
               <p>
-                <span className="text-id">ID de Alojamiento:</span> {relacion.idAlojamiento}
+                <span className="text-id"><FontAwesomeIcon icon={faIdCardClip} /> ID de Alojamiento:</span> {relacion.idAlojamiento}
               </p>
               <p>
-                <span className="text-id">ID de Servicio:</span> {relacion.idServicio}
+                <span className="text-id"><FontAwesomeIcon icon={faIdCard} /> ID de Servicio:</span> {relacion.idServicio}
               </p>
               <button
                 className="eliminar-button"
                 onClick={() => handleDelete(relacion.idAlojamientoServicio)}
               >
-                Eliminar
+                <FontAwesomeIcon icon={faTrashAlt} /> Eliminar
               </button>
             </div>
           ))

@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import { toast } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faImage, faPlus, faList } from '@fortawesome/free-solid-svg-icons';
 
 const CrearImagen = () => {
   // Estados para alojamientos, imágenes y número de imágenes a crear
@@ -94,8 +96,8 @@ const CrearImagen = () => {
   };
 
   return (
-    <div>
-      <h1>Crear Imágenes</h1>
+    <div className="container">
+      <h1><FontAwesomeIcon icon={faImage} /> Crear Imágenes</h1>
       <Formik
         initialValues={{
           idAlojamiento: '',
@@ -105,10 +107,10 @@ const CrearImagen = () => {
         onSubmit={handleSubmit}
       >
         {({ values, isSubmitting, setFieldValue }) => (
-          <Form>
-            <div>
+          <Form className="form">
+            <div className="form-field">
               <label>Alojamiento:</label>
-              <Field as="select" name="idAlojamiento">
+              <Field as="select" name="idAlojamiento" className="select-field">
                 <option value="">Selecciona un alojamiento</option>
                 {alojamientos.map((alojamiento) => (
                   <option key={alojamiento.idAlojamiento} value={alojamiento.idAlojamiento}>
@@ -118,7 +120,7 @@ const CrearImagen = () => {
               </Field>
               <ErrorMessage name="idAlojamiento" component="div" className="error" />
             </div>
-            <div>
+            <div className="form-field">
               <label>Número de Imágenes:</label>
               <Field
                 type="number"
@@ -131,20 +133,21 @@ const CrearImagen = () => {
               />
             </div>
             {values.imagenes.map((_, index) => (
-              <div key={index}>
+              <div key={index} className="form-field">
                 <label>Ruta del Archivo {index + 1}:</label>
                 <Field type="text" name={`imagenes[${index}]`} />
                 <ErrorMessage name={`imagenes[${index}]`} component="div" className="error" />
               </div>
             ))}
-            <button type="submit" disabled={isSubmitting}>
-              Guardar
+            <button type="submit" disabled={isSubmitting} className="button">
+              <FontAwesomeIcon icon={faPlus} /> Guardar
             </button>
           </Form>
         )}
       </Formik>
+      <ToastContainer />
 
-      <h2>Lista de Imágenes</h2>
+      <h2><FontAwesomeIcon icon={faList} /> Lista de Imágenes</h2>
       <div className="tarjetas-contenedor">
         {imagenes.length > 0 ? (
           imagenes.map((imagen) => (
@@ -152,7 +155,7 @@ const CrearImagen = () => {
               <img src={imagen.RutaArchivo} alt={`Imagen ${imagen.idImagen}`} />
               <div className="tarjeta-info">
                 <p>
-                  <span className="text-imagen"> Imagen:</span> {imagen.idImagen}
+                  <span className="text-imagen">Imagen:</span> {imagen.idImagen}
                 </p>
                 <p>
                   <span className="text-url">URL:</span>{imagen.RutaArchivo}

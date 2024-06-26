@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faIdCard, faTrashAlt, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faIdCard, faTrashAlt, faTimes, faList } from '@fortawesome/free-solid-svg-icons';
 
 
 const EliminarServicio = () => {
@@ -71,13 +71,17 @@ const EliminarServicio = () => {
   };
 
   return (
-    <div className="eliminar-servicio-container">
+    <div className="container">
       <div className="tarjetas-contenedor">
         {servicios.length > 0 ? (
           servicios.map((servicio) => (
             <div key={servicio.idServicio} className="tarjeta">
-              <p><FontAwesomeIcon icon={faIdCard} /> ID: {servicio.idServicio}</p>
-              <p><FontAwesomeIcon icon={faTrashAlt} /> Nombre: {servicio.Nombre}</p>
+              <p>
+                <span className='text-id'> <FontAwesomeIcon icon={faIdCard} /> Id: </span> {servicio.idServicio}
+              </p>
+              <p>
+                <span className='text-id'> <FontAwesomeIcon icon={faTrashAlt} /> Nombre:</span> {servicio.Nombre}
+              </p>
               <button onClick={() => selectServiceToDelete(servicio)}> <FontAwesomeIcon icon={faTrashAlt}/> Eliminar</button>
             </div>
           ))
@@ -89,7 +93,7 @@ const EliminarServicio = () => {
       {showForm && selectedService && ( // Renderizado condicional del formulario de eliminación
         <form onSubmit={handleDeleteService} className="form-eliminar">
           <h2>Eliminar Servicio</h2>
-          <p><FontAwesomeIcon icon={faIdCard} /> ID: {selectedService.idServicio}</p>
+          <p><FontAwesomeIcon icon={faIdCard} /> Id: {selectedService.idServicio}</p>
           <p><FontAwesomeIcon icon={faTrashAlt} /> Nombre: {selectedService.Nombre}</p>
           <div className="botones-accion">
             <button type="submit"><FontAwesomeIcon icon={faTrashAlt}/> Eliminar</button>

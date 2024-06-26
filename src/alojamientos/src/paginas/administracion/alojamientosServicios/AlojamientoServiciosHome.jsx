@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus, faEdit, faTrash, faSearch, faBed } from '@fortawesome/free-solid-svg-icons';
+import { faPlus, faEdit, faTrash, faSearch, faBuilding } from '@fortawesome/free-solid-svg-icons';
 import CrearAlojamientoServicio from './componentes/CrearAlojamientoServicio';
 import ActualizarAlojamientoServicio from './componentes/ActualizarAlojamientoServicio';
 import EliminarAlojamientoServicio from './componentes/EliminarAlojamientoServicio';
@@ -22,8 +22,8 @@ const AlojamientoServiciosHome = () => {
   return (
     <div className={`admin-container ${section ? 'hidden' : ''}`}>
       <ToastContainer />
-      <h1><FontAwesomeIcon icon={faBed} /> Alojamientos con Servicios</h1>
-      <div className={`menu-container ${section ? 'hidden' : ''}`}>
+      <h1><FontAwesomeIcon icon={faBuilding} /> Alojamientos con Servicios</h1>
+      <div className={`menu-container2 ${section ? 'hidden' : ''}`}>
         <button className={section === 'crear' ? 'active' : ''} onClick={() => handleClick('crear')}>
           <FontAwesomeIcon icon={faPlus} /> Crear Alojamiento Servicio
         </button>

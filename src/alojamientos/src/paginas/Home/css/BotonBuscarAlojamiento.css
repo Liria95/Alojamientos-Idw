@@ -25,6 +25,7 @@
     position: relative;
     right: -8%;
     z-index: 50;
+    color: #000;
   }
   
   .text {
@@ -32,15 +33,16 @@
     font-size: 35px;
     position: relative;
     z-index: 50;
-    top: -230px;
-    left: -320px;
+    top: -380px;
+    left: -360px;
+    color: #000;
   }
   
   
   #casitaPortada img{
     width: 38vw;
     position: relative;
-    top: -390px;
+    top: -520px;
     left: -180px;
     float: right;
     border-top-left-radius: 120px;

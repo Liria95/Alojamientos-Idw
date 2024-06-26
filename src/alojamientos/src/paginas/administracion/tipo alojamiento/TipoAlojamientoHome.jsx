@@ -25,7 +25,7 @@ const AlojamientosHome = () => {
     <div className={`admin-container ${section ? 'hidden' : ''}`}>
       <ToastContainer />
       <h1><FontAwesomeIcon icon={faHotel} /> Tipo Alojamientos</h1>
-      <div className={`menu-container ${section ? 'hidden' : ''}`}>
+      <div className={`menu-container2 ${section ? 'hidden' : ''}`}>
         <button onClick={() => handleClick('tipo')}>
           <FontAwesomeIcon icon={faCog} style={{ marginRight: '5px' }} />
           Administrar Tipo de alojamiento
