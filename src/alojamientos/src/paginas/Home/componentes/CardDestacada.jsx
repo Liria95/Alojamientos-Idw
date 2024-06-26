@@ -74,7 +74,7 @@ export function CardDestacada({ nombre }) {
                                     ))}
                                 </Slider>
                             ) : (
-                                <img src={casa} alt={`Imagen ${alojamiento.Titulo}`} />
+                                <img src='' alt={`Imagen ${alojamiento.Titulo} no Disponible`} />
                             )}
                             <p className="infoPropiedadDestacada">
                                 <span className="enfasisTexto">Lo mejor de la propiedad: Lorem ipsum dolor sit amet! Officiis.</span>
@@ -83,7 +83,7 @@ export function CardDestacada({ nombre }) {
                     );
                 })
             ) : (
-                <p>No hay imágenes disponibles.</p>
+                <p>No hay propiedades destacadas disponibles.</p>
             )}
         </div>
     );
